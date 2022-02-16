@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import imgList from '../../img/Slider/imgList';
 import SliderItems from '../../common/SliderItem';
 import './Slider.scss';
 
 const Slider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  useEffect(() => {
+    const idTimer = setTimeout(() => {
+      setActiveIndex((state) => (state + 1 > imgList.length - 1 ? 0 : state + 1));
+    }, 5000);
+    return () => {
+      clearTimeout(idTimer);
+    };
+  });
 
   return (
     <div className="slider">
@@ -26,7 +34,7 @@ const Slider = () => {
       <div className="slider-dots">
         {imgList.map(({ id }, index) => (
           <div className={`slider-dots__item ${activeIndex === index ? 'active' : ''}`} key={id}>
-            <button className="slider-dots__button"></button>
+            <button className="slider-dots__button" onClick={() => setActiveIndex(index)} />
           </div>
         ))}
       </div>
