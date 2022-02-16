@@ -1,0 +1,43 @@
+.slider {
+  width: 688px;
+  position: relative;
+  display: flex;
+}
+
+.slider-button {
+  position: absolute;
+  z-index: 1;
+
+  &.back {
+    left: 0;
+  }
+
+  &.next {
+    right: 0;
+  }
+}
+
+.slider-form {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+}
+
+.slider-form__item {
+  position: absolute;
+  transition: 0.8s;
+
+  &.prev {
+    left: -100%;
+  }
+
+  &.active {
+    left: 0;
+  }
+
+  &.next {
+    left: 100%;
+  }
+}
