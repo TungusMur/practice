@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import imgList from '../../img/Slider/imgList';
 import SliderItems from '../../common/SliderItem';
+import Next from '../../img/Button/Next.svg';
+import Back from '../../img/Button/Back.svg';
 import './Slider.scss';
 
 const Slider = () => {
@@ -8,7 +10,7 @@ const Slider = () => {
   useEffect(() => {
     const idTimer = setTimeout(() => {
       setActiveIndex((state) => (state + 1 > imgList.length - 1 ? 0 : state + 1));
-    }, 5000);
+    }, 4000);
     return () => {
       clearTimeout(idTimer);
     };
@@ -20,7 +22,7 @@ const Slider = () => {
         className="slider__button back"
         onClick={() => setActiveIndex((state) => (state ? state - 1 : imgList.length - 1))}
       >
-        {'<'}
+        <img src={Back} alt="back" />
       </button>
       <div className="slider-form">
         <SliderItems className="slider-form" activeIndex={activeIndex} dataList={imgList} />
@@ -29,7 +31,7 @@ const Slider = () => {
         className="slider__button next"
         onClick={() => setActiveIndex((state) => (state + 1 !== imgList.length ? state + 1 : 0))}
       >
-        {'>'}
+        <img src={Next} alt="next" />
       </button>
       <div className="slider-dots">
         {imgList.map(({ id }, index) => (

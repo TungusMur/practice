@@ -11,22 +11,22 @@ const SliderItems = ({ className, activeIndex, dataList }) =>
     return (
       <div
         className={`${className}__item ${dataList[index].id === activeIndex ? 'active' : ''}`}
-        style={{ left: `${item}00%` }}
+        style={{ left: `${item * 80}%` }}
         // key={item === 2 ? `${dataList[index].id}next` : item === -2 ? `${dataList[index].id}prev` : dataList[index].id}
         key={dataList[index].id}
       >
         <div className={`${className}__item-img`}>
           <img src={dataList[index].img} alt="car" />
         </div>
-        <div className={`${className}__item-info`}>
+        <div className={`${className}__item-content`}>
           <div className={`${className}__item-chapter`}>
             <h2>{dataList[index].chapter}</h2>
           </div>
           <div className={`${className}__item-description`}>
             <h6>{dataList[index].description}</h6>
           </div>
+          <button className={`${className}__item-button id${dataList[index].id}`}>Подобронее</button>
         </div>
-        <button className={`${className}__item-button id${dataList[index].id}`}>Подобронее</button>
       </div>
     );
   });

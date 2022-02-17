@@ -1,7 +1,7 @@
-import sliderImg1 from './sliderImg1.svg';
-import sliderImg2 from './sliderImg2.svg';
-import sliderImg3 from './sliderImg3.svg';
-import sliderImg4 from './sliderImg4.svg';
+import sliderImg1 from './sliderImg1.jpg';
+import sliderImg2 from './sliderImg2.jpg';
+import sliderImg3 from './sliderImg3.jpg';
+import sliderImg4 from './sliderImg4.jpg';
 
 export default [
   {
