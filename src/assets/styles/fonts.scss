@@ -1,4 +1,9 @@
 @font-face {
+  font-family: 'Roboto-Bold';
+  src: url('../fonts/Roboto-Bold.ttf');
+}
+
+@font-face {
   font-family: 'Roboto-Normal';
   src: url('../fonts/Roboto-Regular.ttf');
 }
@@ -14,8 +19,9 @@
 }
 
 h1 {
-  font-family: 'Roboto-Normal';
+  font-family: 'Roboto-Medium';
   font-size: 70px;
+  font-weight: 700;
 }
 
 h2 {
@@ -33,11 +39,13 @@ h3 {
 }
 
 h4 {
+  font-family: 'Roboto-Bold';
   font-size: 30px;
 }
 
 h5 {
-  font-size: 26px;
+  font-family: 'Roboto-Normal';
+  font-size: 14px;
 }
 
 h6 {

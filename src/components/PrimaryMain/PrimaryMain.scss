@@ -1,0 +1,65 @@
+.primaryMain {
+  display: flex;
+}
+
+.primaryMain-booking {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 50%;
+}
+
+.primaryMain-booking__header,
+.primaryMain-booking__content,
+.primaryMain-booking__footer {
+  width: 81.4%;
+}
+
+.primaryMain-booking__header,
+.primaryMain-booking__footer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.primaryMain-booking__logo {
+  color: #0ec261;
+}
+
+.primaryMain-booking__map {
+  align-items: center;
+  color: #999999;
+  display: flex;
+}
+
+.primaryMain-booking__chapter {
+  &.first {
+    color: #121212;
+  }
+
+  &.second {
+    color: #0ec261;
+  }
+}
+
+.primaryMain-booking__description {
+  color: #999999;
+}
+
+.primaryMain-booking__button {
+  border-radius: 8px;
+  color: #eeeeee;
+  font-family: 'Roboto-Normal';
+  font-size: 18px;
+  height: 48px;
+  width: 250px;
+}
+
+.primaryMain-booking__life {
+  color: #999999;
+}
+
+.primaryMain-booking__phone {
+  color: #121212;
+}

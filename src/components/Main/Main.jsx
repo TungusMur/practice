@@ -6,7 +6,7 @@ const Main = () => {
   return (
     <div className="main">
       <Routes>
-        <Route exact path={'/lang=:lang'} element={<PrimaryMain />} />
+        <Route exact path={'/'} element={<PrimaryMain />} />
       </Routes>
     </div>
   );
