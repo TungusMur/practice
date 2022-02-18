@@ -7,7 +7,7 @@ module.exports = {
   entry: ['@babel/polyfill', path.resolve(__dirname, '../src') + '/index.jsx'],
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: "[name].[hash].js",
+    filename: '[name].[hash].js',
     // filename: 'index_bundle.js',
     clean: true,
   },
@@ -29,7 +29,7 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(jpg|jpeg|png|svg)/,
+        test: /\.(jpg|jpeg|png|svg)$/,
         use: ['file-loader'],
       },
       {
