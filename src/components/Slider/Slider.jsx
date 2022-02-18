@@ -3,7 +3,7 @@ import imgList from './constants';
 import SliderItems from '../../common/SliderItem';
 import next from '../../assets/img/Button/Next.svg';
 import back from '../../assets/img/Button/Back.svg';
-import './Slider.scss';
+import './styles.scss';
 
 const Slider = () => {
   const [activeIndex, setActiveIndex] = useState(0);

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../assets/styles/button.scss';
+import '../../styles/button.scss';
 
 const SliderItems = ({ className, activeIndex, dataList }) =>
   [-1, 0, 1].map((item) => {
