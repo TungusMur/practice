@@ -4,11 +4,11 @@ import PrimaryMain from '../PrimaryMain';
 
 const Main = () => {
   return (
-    <div className="main">
+    <main>
       <Routes>
         <Route exact path={'/'} element={<PrimaryMain />} />
       </Routes>
-    </div>
+    </main>
   );
 };
 
