@@ -1,7 +1,8 @@
 import React from 'react';
+import Slider from '../Slider';
 import iconMap from '../../assets/img/Map/icon.svg';
-import '../../assets/styles/button.scss';
-import './PrimaryMain.scss';
+import '../../styles/button.scss';
+import './styles.scss';
 
 const PrimaryMain = () => {
   return (
@@ -37,7 +38,7 @@ const PrimaryMain = () => {
           </div>
         </div>
       </div>
-      <div className="primaryMain-slider">тут должен быть слайдер</div>
+      <Slider />
     </div>
   );
 };

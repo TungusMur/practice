@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import imgList from './constants';
 import SliderItems from '../../common/SliderItem';
-import Next from '../../assets/img/Button/Next.svg';
-import Back from '../../assets/img/Button/Back.svg';
-import './Slider.scss';
+import next from '../../assets/img/Button/Next.svg';
+import back from '../../assets/img/Button/Back.svg';
+import './styles.scss';
 
 const Slider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -22,7 +22,7 @@ const Slider = () => {
         className="slider__button back"
         onClick={() => setActiveIndex((state) => (state ? state - 1 : imgList.length - 1))}
       >
-        <img src={Back} alt="back" />
+        <img src={back} alt="back" />
       </button>
       <div className="slider-form">
         <SliderItems className="slider-form" activeIndex={activeIndex} dataList={imgList} />
@@ -31,7 +31,7 @@ const Slider = () => {
         className="slider__button next"
         onClick={() => setActiveIndex((state) => (state + 1 !== imgList.length ? state + 1 : 0))}
       >
-        <img src={Next} alt="next" />
+        <img src={next} alt="next" />
       </button>
       <div className="slider-dots">
         {imgList.map(({ id }, index) => (

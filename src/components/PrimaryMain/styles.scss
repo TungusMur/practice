@@ -7,7 +7,13 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  justify-content: space-between;
   width: 50%;
+}
+
+.primaryMain-booking__header {
+  //margin: 4.7% 0 23.97%;
+  margin-top: 4.7%;
 }
 
 .primaryMain-booking__header,
@@ -23,6 +29,11 @@
   justify-content: space-between;
 }
 
+.primaryMain-booking__footer {
+  // margin: 33.53% 0 4.7%;
+  margin-bottom: 4.7%;
+}
+
 .primaryMain-booking__logo {
   color: #0ec261;
 }
@@ -31,6 +42,10 @@
   align-items: center;
   color: #999999;
   display: flex;
+}
+
+.primaryMain-booking__content {
+  margin-bottom: 65px;
 }
 
 .primaryMain-booking__chapter {
@@ -45,6 +60,7 @@
 
 .primaryMain-booking__description {
   color: #999999;
+  margin: 6.07% 0 10.71%;
 }
 
 .primaryMain-booking__button {
