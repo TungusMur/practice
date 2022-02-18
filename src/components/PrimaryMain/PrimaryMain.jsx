@@ -1,4 +1,5 @@
 import React from 'react';
+import Slider from '../Slider';
 
 const PrimaryMain = () => {
   return (
@@ -11,11 +12,10 @@ const PrimaryMain = () => {
         <div className="primaryMain-booking__content">
           <div></div>
           <div></div>
-          <button>Забронировать</button>
         </div>
         <div className="primaryMain-booking__footer"></div>
       </div>
-      <div className="primaryMain-slider">тут должен быть слайдер</div>
+      <Slider />
     </div>
   );
 };
