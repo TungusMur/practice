@@ -1,0 +1,50 @@
+@font-face {
+  font-family: 'Roboto-Normal';
+  src: url('../fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto-Light';
+  src: url('../fonts/Roboto-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto-Medium';
+  src: url('../fonts/Roboto-Medium.ttf');
+}
+
+h1 {
+  font-family: 'Roboto-Normal';
+  font-size: 70px;
+}
+
+h2 {
+  font-family: 'Roboto-Medium';
+  font-size: 40px;
+  font-weight: 500;
+
+  @media screen and (max-width: 1439px) {
+    font-size: 32px;
+  }
+}
+
+h3 {
+  font-size: 32px;
+}
+
+h4 {
+  font-size: 30px;
+}
+
+h5 {
+  font-size: 26px;
+}
+
+h6 {
+  font-family: 'Roboto-Light';
+  font-size: 24px;
+
+  @media screen and (max-width: 1439px) {
+    font-size: 22px;
+  }
+}
