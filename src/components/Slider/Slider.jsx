@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import imgList from '../../img/Slider/imgList';
+import imgList from './constants';
 import SliderItems from '../../common/SliderItem';
-import Next from '../../img/Button/Next.svg';
-import Back from '../../img/Button/Back.svg';
+import Next from '../../assets/img/Button/Next.svg';
+import Back from '../../assets/img/Button/Back.svg';
 import './Slider.scss';
 
 const Slider = () => {
