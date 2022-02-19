@@ -1,0 +1,29 @@
+header {
+  align-items: center;
+  background: #151b1f;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: fixed;
+  width: 64px;
+  z-index: 1;
+}
+
+.header-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.header-burger {
+  margin-top: 32px;
+}
+
+.header-changeLanguage {
+  background: none;
+  color: #0ec261;
+  font-family: 'Roboto-Bold';
+  margin-bottom: 32px;
+}
