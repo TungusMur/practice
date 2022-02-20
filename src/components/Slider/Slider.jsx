@@ -7,14 +7,15 @@ import './styles.scss';
 
 const Slider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  useEffect(() => {
-    const idTimer = setTimeout(() => {
-      setActiveIndex((state) => (state + 1 > imgList.length - 1 ? 0 : state + 1));
-    }, 4000);
-    return () => {
-      clearTimeout(idTimer);
-    };
-  });
+
+  // useEffect(() => {
+  //   const idTimer = setTimeout(() => {
+  //     setActiveIndex((state) => (state + 1 > imgList.length - 1 ? 0 : state + 1));
+  //   }, 4000);
+  //   return () => {
+  //     clearTimeout(idTimer);
+  //   };
+  // });
 
   return (
     <div className="slider">
