@@ -1,7 +1,7 @@
 import Header from '../components/Header';
 import Main from '../components/Main';
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import './styles.scss';
 
 const App = () => {
