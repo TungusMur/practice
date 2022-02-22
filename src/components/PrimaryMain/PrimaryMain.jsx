@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from '../Slider';
-import iconMap from '../../assets/img/Map/icon.svg';
+import MainHeader from '../../common/MainHeader';
 import '../../styles/button.scss';
 import './styles.scss';
 
@@ -8,15 +8,7 @@ const PrimaryMain = () => {
   return (
     <div className="primaryMain">
       <div className="primaryMain-booking">
-        <div className="primaryMain-booking__header">
-          <div className="primaryMain-booking__logo">
-            <h4>Need for drive</h4>
-          </div>
-          <div className="primaryMain-booking__map">
-            <img src={iconMap} alt="iconMap" />
-            <h5>Ульяновск</h5>
-          </div>
-        </div>
+        <MainHeader />
         <div className="primaryMain-booking__content">
           <div className="primaryMain-booking__chapter first">
             <h1>Каршеринг</h1>

@@ -22,6 +22,10 @@ h1 {
   font-family: 'Roboto-Medium';
   font-size: 70px;
   font-weight: 700;
+
+  @media screen and (max-width: 767px) {
+    font-size: 32px;
+  }
 }
 
 h2 {
@@ -41,6 +45,9 @@ h3 {
   @media screen and (max-width: 1023px) {
     font-size: 28px;
   }
+  @media screen and (max-width: 767px) {
+    font-size: 22px;
+  }
 }
 
 h4 {
@@ -59,5 +66,8 @@ h6 {
 
   @media screen and (max-width: 1439px) {
     font-size: 22px;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 18px;
   }
 }

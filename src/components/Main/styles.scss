@@ -11,4 +11,7 @@ main {
   @media screen and (max-width: 1023px) {
     margin-left: 85.77px;
   }
+  @media screen and (max-width: 767px) {
+    margin: 0;
+  }
 }

@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import iconMap from '../../assets/img/Map/icon.svg';
 import facebook from '../../assets/img/SocialNetwork/facebook.svg';
 import facebookHover from '../../assets/img/SocialNetwork/facebookHover.svg';
 import instagram from '../../assets/img/SocialNetwork/instagram.svg';
@@ -8,6 +7,7 @@ import instagramHover from '../../assets/img/SocialNetwork/instagramHover.svg';
 import telegram from '../../assets/img/SocialNetwork/telegram.svg';
 import telegramHover from '../../assets/img/SocialNetwork/telegramHover.svg';
 import './styles.scss';
+import '../../styles/button.scss';
 
 const Header = () => {
   const [statusHeaderClick, setStatusHeaderClick] = useState('');
@@ -36,7 +36,6 @@ const Header = () => {
       </div> */}
       <div className="header-bar">
         <button
-          id="button-burger"
           className={`header-bar_button-burger button-burger ${statusHeaderClick}`}
           onClick={() => {
             statusHeaderClick ? setStatusHeaderClick('') : setStatusHeaderClick('active');
