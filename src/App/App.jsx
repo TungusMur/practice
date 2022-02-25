@@ -1,18 +1,27 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import Header from '../components/Header';
 import Main from '../components/Main';
-import React from 'react';
-import { HashRouter as Router } from 'react-router-dom';
-import './styles.scss';
 
-const App = () => {
-  return (
-    <div className="app">
-      <Router>
-        <Header />
-        <Main />
-      </Router>
-    </div>
-  );
-};
+const App = () => (
+  <div className="app">
+    <Router>
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <>
+              <Header />
+              <Outlet />
+            </>
+          }
+        >
+          <Route path={':lang/*'} element={<Main />}></Route>
+        </Route>
+      </Routes>
+    </Router>
+  </div>
+);
 
 export default App;

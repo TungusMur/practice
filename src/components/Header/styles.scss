@@ -24,7 +24,6 @@ header {
   }
 }
 
-
 .header-bar {
   align-items: center;
   background: #151b1f;
@@ -55,6 +54,9 @@ header {
   font-family: 'Roboto-Bold';
   margin-bottom: 32px;
 
+  // &.active {
+  //   display: none;
+  // }
   @media screen and (max-width: 767px) {
     display: none;
 
@@ -86,6 +88,7 @@ header {
 }
 
 .header-menu-form {
+  // margin-left: 4.44%;
   height: 100%;
   left: -100%;
   margin-left: 64px;
