@@ -10,7 +10,7 @@ const MainHeader = () => {
     <div className="mainHeader">
       <div className="mainHeader-form">
         <div className="mainHeader__logo">
-          <NavLink className="mainHeader__link" to="/">
+          <NavLink className="mainHeader__link" to={`/${params.lang}`}>
             <h4>Need for drive</h4>
           </NavLink>
         </div>
