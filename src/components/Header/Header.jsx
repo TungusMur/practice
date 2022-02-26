@@ -12,6 +12,7 @@ const Header = () => {
   const params = useParams();
 
   useEffect(() => {
+    console.log(location);
     if (location.pathname === '/') {
       navigation('/ru');
     }
@@ -39,7 +40,7 @@ const Header = () => {
         <button
           className={`header-bar_button-changeLanguage ${statusHeaderClick}`}
           onClick={() => {
-            navigation(`/${params.lang === 'en' ? 'ru' : 'en'}`);
+            navigation(`/${params.lang === 'en' ? 'ru' : 'en'}${location.pathname.match(/\/\w+/g)?.length > 1 ? location.pathname.match(/\/\w+/g)[1] : ''}`);
           }}
         >
           {params.lang === 'en' ? 'Rus' : 'Eng'}
