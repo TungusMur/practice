@@ -1,4 +1,9 @@
 @font-face {
+  font-family: 'Roboto-Bold';
+  src: url('../assets/fonts/Roboto-Bold.ttf');
+}
+
+@font-face {
   font-family: 'Roboto-Normal';
   src: url('../assets/fonts/Roboto-Regular.ttf');
 }
@@ -14,8 +19,13 @@
 }
 
 h1 {
-  font-family: 'Roboto-Normal';
+  font-family: 'Roboto-Medium';
   font-size: 70px;
+  font-weight: 700;
+
+  @media screen and (max-width: 767px) {
+    font-size: 32px;
+  }
 }
 
 h2 {
@@ -29,15 +39,26 @@ h2 {
 }
 
 h3 {
+  font-family: 'Roboto-Medium';
   font-size: 32px;
+
+  @media screen and (max-width: 1023px) {
+    font-size: 28px;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 22px;
+  }
 }
 
 h4 {
+  font-family: 'Roboto-Bold';
   font-size: 30px;
 }
 
 h5 {
-  font-size: 26px;
+
+  font-family: 'Roboto-Normal';
+  font-size: 14px;
 }
 
 h6 {
@@ -46,5 +67,8 @@ h6 {
 
   @media screen and (max-width: 1439px) {
     font-size: 22px;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 18px;
   }
 }
