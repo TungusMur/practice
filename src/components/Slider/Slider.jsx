@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import imgList from './constants';
 import SliderItems from '../../common/SliderItem';
-import next from '../../assets/img/Button/Next.svg';
-import back from '../../assets/img/Button/Back.svg';
+import next from '../../assets/img/Button/next.svg';
+import back from '../../assets/img/Button/back.svg';
 import './styles.scss';
 
 const Slider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+
   useEffect(() => {
     const idTimer = setTimeout(() => {
       setActiveIndex((state) => (state + 1 > imgList.length - 1 ? 0 : state + 1));

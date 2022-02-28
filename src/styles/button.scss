@@ -2,8 +2,71 @@ button {
   transition: all 0.3s;
 }
 
+.button-burger {
+  align-items: center;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  height: 32px;
+  justify-content: center;
+  position: relative;
+  width: 32px;
+
+  span,
+  &::before,
+  &::after {
+    background: #ffffff;
+    border-radius: 5px;
+    height: 3px;
+    position: relative;
+    transition: 0.4s;
+    width: 27px;
+
+    @media screen and (max-width: 767px) {
+      background: #121212;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: '';
+  }
+
+  &::before {
+    top: -5px;
+  }
+
+  &::after {
+    top: 5px;
+  }
+
+  &.active {
+    span {
+      background: #ffffff;
+      transform: scaleX(0);
+    }
+
+    &::before {
+      background: #ffffff;
+      top: 3px;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      background: #ffffff;
+      top: -3px;
+      transform: rotate(-45deg);
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    height: 33.45px;
+    width: 33.57px;
+  }
+}
+
 .button-classic {
-    background: linear-gradient(90deg, hsl(148, 87%, 41%) 2.61%, hsl(158, 96%, 32%) 112.6%);
+  background: linear-gradient(90deg, hsl(148, 87%, 41%) 2.61%, hsl(158, 96%, 32%) 112.6%);
 
   &:hover {
     background: linear-gradient(90deg, hsl(148, 87%, 31%) 2.61%, hsl(158, 96%, 22%) 112.6%);

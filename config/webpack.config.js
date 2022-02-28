@@ -1,5 +1,4 @@
 const path = require('path');
-// const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -7,12 +6,13 @@ module.exports = {
   entry: ['@babel/polyfill', path.resolve(__dirname, '../src') + '/index.jsx'],
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: '[name].[hash].js',
-    // filename: 'index_bundle.js',
+    publicPath: '/',
+    filename: 'bundle.js',
     clean: true,
   },
   devServer: {
     historyApiFallback: true,
+    static: '../dist',
     open: true,
     compress: true,
     hot: true,
@@ -20,7 +20,6 @@ module.exports = {
   },
   plugins: [
     new HTMLWebpackPlugin({ template: path.resolve(__dirname, '../src') + '/index.html', filename: 'index.html' }),
-    // new CleanWebpackPlugin(),
   ],
   module: {
     rules: [
@@ -50,7 +49,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             cacheDirectory: true,
-            presets: ['@babel/preset-react', '@babel/preset-env'],
+            presets: ['@babel/preset-env', '@babel/preset-react'],
           },
         },
       },
@@ -59,5 +58,8 @@ module.exports = {
   resolve: {
     modules: ['node_modules'],
     extensions: ['.js', '.jsx', '.json'],
+    alias: {
+      'react-dom': '@hot-loader/react-dom',
+    },
   },
 };

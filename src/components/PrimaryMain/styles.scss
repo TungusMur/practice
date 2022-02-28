@@ -1,0 +1,130 @@
+.primaryMain {
+  display: flex;
+  height: 100%;
+}
+
+.primaryMain-booking {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  width: 50%;
+
+  @media screen and (max-width: 1439px) {
+    width: 57.29%;
+  }
+  @media screen and (max-width: 1022px) {
+    width: 100%;
+  }
+}
+
+.primaryMain-booking__content,
+.primaryMain-booking__footer {
+  width: 81.4%;
+
+  @media screen and (max-width: 1439px) {
+    width: 88.37%;
+  }
+  @media screen and (max-width: 1022px) {
+    width: 90.58%;
+  }
+}
+
+.primaryMain-booking__footer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.primaryMain-booking__footer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+
+  @media screen and (max-width: 1022px) {
+    margin-bottom: 38px;
+  }
+  @media screen and (max-width: 767px) {
+    margin: 0px;
+    width: 100%;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    background: #151b1f;
+  }
+}
+
+.primaryMain-booking__content {
+  margin-bottom: 65px;
+
+  @media screen and (max-width: 1439px) {
+    margin-bottom: 69px;
+  }
+  @media screen and (max-width: 1023px) {
+    margin-bottom: 57px;
+  }
+  @media screen and (max-width: 767px) {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 139.33px;
+    width: 100%;
+  }
+}
+
+.primaryMain-booking__chapter {
+  &.first {
+    color: #121212;
+  }
+
+  &.second {
+    color: #0ec261;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 288px;
+  }
+}
+
+.primaryMain-booking__description {
+  color: #999999;
+  margin: 34px 0 60px;
+
+  @media screen and (max-width: 767px) {
+    margin: 16px 0 32px;
+    width: 288px;
+  }
+}
+
+.primaryMain-booking__button {
+  border-radius: 8px;
+  color: #eeeeee;
+  font-family: 'Roboto-Normal';
+  font-size: 18px;
+  height: 48px;
+  width: 250px;
+
+  @media screen and (max-width: 767px) {
+    border-radius: 0;
+    width: 100%;
+  }
+}
+
+.primaryMain-booking__life {
+  color: #999999;
+
+  @media screen and (max-width: 767px) {
+    margin: 4px 16px 16px;
+    color: #eeeeee;
+  }
+}
+
+.primaryMain-booking__phone {
+  color: #121212;
+
+  @media screen and (max-width: 767px) {
+    margin: 16px 16px 4px;
+    color: #0ec261;
+  }
+}
