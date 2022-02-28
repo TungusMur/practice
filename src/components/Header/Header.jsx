@@ -12,7 +12,6 @@ const Header = () => {
   const params = useParams();
 
   useEffect(() => {
-    console.log(location);
     if (location.pathname === '/') {
       navigation('/ru');
     }
@@ -21,10 +20,6 @@ const Header = () => {
   useEffect(() => {
     document.body.style.overflow = statusHeaderClick ? 'hidden' : 'auto';
   }, [statusHeaderClick]);
-
-  useEffect(() => {
-    setStatusHeaderClick('');
-  }, [location]);
 
   return (
     <header className={`${statusHeaderClick}`}>
@@ -40,7 +35,11 @@ const Header = () => {
         <button
           className={`header-bar_button-changeLanguage ${statusHeaderClick}`}
           onClick={() => {
-            navigation(`/${params.lang === 'en' ? 'ru' : 'en'}${location.pathname.match(/\/\w+/g)?.length > 1 ? location.pathname.match(/\/\w+/g)[1] : ''}`);
+            navigation(
+              `/${params.lang === 'en' ? 'ru' : 'en'}${
+                location.pathname.match(/\/\w+/g)?.length > 1 ? location.pathname.match(/\/\w+/g)[1] : ''
+              }`
+            );
           }}
         >
           {params.lang === 'en' ? 'Rus' : 'Eng'}
@@ -52,7 +51,13 @@ const Header = () => {
             <div className="header-navigation">
               {navigationItems.map((item) => (
                 <div key={item.id + item.link} className="header-navigation_item">
-                  <NavLink className="header-navigation_link" to={`/${params.lang}/${item.link}`}>
+                  <NavLink
+                    className="header-navigation_link"
+                    to={`/${params.lang}/${item.link}`}
+                    onClick={() => {
+                      setStatusHeaderClick('');
+                    }}
+                  >
                     <h3>{item[`${params.lang}Chapter`]}</h3>
                   </NavLink>
                 </div>
