@@ -11,14 +11,6 @@ const Booking = ({ stateRouting, statePage, changeStateRouting }) => {
   const [bookingPageActive, setBookingPageActive] = useState(0);
   const params = useParams();
 
-  useEffect(() => {
-    console.log(bookingPageActive);
-  }, [bookingPageActive]);
-
-  useEffect(() => {
-    console.log(stateRouting);
-  });
-
   return (
     <div className="booking">
       <MainHeader />
