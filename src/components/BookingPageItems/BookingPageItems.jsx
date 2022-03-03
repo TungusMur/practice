@@ -10,7 +10,7 @@ const BookingPageItems = ({ bookingPageActive, dataTicket, changeStateRouting, c
 
       useEffect(() => {
         if (dataTicket.city && dataTicket.deliveryPoint) {
-          changeStatePage('CHANGE_STATE_PAGES_1');
+          changeStatePage('CHANGE_STATE_PAGES_0');
         }
       });
 
@@ -25,7 +25,7 @@ const BookingPageItems = ({ bookingPageActive, dataTicket, changeStateRouting, c
                   setCity(e.target.value);
 
                   if (e.target.value.replace(/ /g, '')) {
-                    changeStateRouting('CHANGE_STATE_ROUTING_1', { city: e.target.value, deliveryPoint });
+                    changeStateRouting('CHANGE_STATE_ROUTING_0', { city: e.target.value, deliveryPoint });
                   }
                 }}
               />
@@ -38,7 +38,7 @@ const BookingPageItems = ({ bookingPageActive, dataTicket, changeStateRouting, c
                   setDeliveryPoint(e.target.value);
 
                   if (e.target.value.replace(/ /g, '')) {
-                    changeStateRouting('CHANGE_STATE_ROUTING_1', { city, deliveryPoint: e.target.value });
+                    changeStateRouting('CHANGE_STATE_ROUTING_0', { city, deliveryPoint: e.target.value });
                   }
                 }}
               />

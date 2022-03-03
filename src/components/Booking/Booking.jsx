@@ -42,7 +42,7 @@ const Booking = ({ stateRouting, statePage, changeStateRouting }) => {
                 setBookingPageActive((state) => {
                   return (state += 1);
                 });
-                changeStateRouting(`CHANGE_STATE_ROUTING_${bookingPageActive}`);
+                changeStateRouting(`CHANGE_STATE_ROUTING_${bookingPageActive + 1}`);
               }
             }}
           >
