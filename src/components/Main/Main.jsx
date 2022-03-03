@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate, useParams } from 'react-router-dom';
 import PrimaryMain from '../PrimaryMain';
+import Booking from '../Booking';
 import NotFound from '../NotFound';
 import './styles.scss';
 
@@ -19,6 +20,7 @@ const Main = () => {
     <main>
       <Routes>
         <Route index element={<PrimaryMain />} />
+        <Route path="reserve" element={<Booking />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </main>

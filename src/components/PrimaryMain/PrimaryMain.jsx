@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Slider from '../Slider';
 import MainHeader from '../../common/MainHeader';
 import '../../styles/button.scss';
@@ -7,6 +7,7 @@ import './styles.scss';
 
 const PrimaryMain = () => {
   const params = useParams();
+  const navigation = useNavigate();
 
   return (
     <div className="primaryMain">
@@ -26,7 +27,12 @@ const PrimaryMain = () => {
                 : 'Поминутная аренда авто твоего города'}
             </h6>
           </div>
-          <button className="primaryMain-booking__button button-classic">
+          <button
+            className="primaryMain-booking__button button-classic"
+            onClick={() => {
+              navigation(`/${params.lang}/reserve`);
+            }}
+          >
             {params.lang === 'en' ? 'Reserve' : 'Забронировать'}
           </button>
         </div>

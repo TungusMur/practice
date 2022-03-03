@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import imgList from './constants';
-import SliderItems from '../../common/SliderItem';
+import SliderItems from '../SliderItem';
 import next from '../../assets/img/Button/next.svg';
 import back from '../../assets/img/Button/back.svg';
 import './styles.scss';
