@@ -25,7 +25,9 @@ const defaultState = {
     dateFrom: '',
     dateTo: '',
     tariff: '',
-    additionalServices: '',
+    fullTank: '',
+    rightHand: '',
+    childSeat: '',
   },
 };
 
@@ -44,7 +46,9 @@ export default (state = defaultState, { type, payload }) => {
           dateFrom: '',
           dateTo: '',
           tariff: '',
-          additionalServices: '',
+          fullTank: '',
+          childSeat: '',
+          rightHand: '',
         },
       };
     case CHANGE_STATE_ROUTING_1:
@@ -59,7 +63,9 @@ export default (state = defaultState, { type, payload }) => {
           dateFrom: '',
           dateTo: '',
           tariff: '',
-          additionalServices: '',
+          fullTank: '',
+          childSeat: '',
+          rightHand: '',
         },
       };
     case CHANGE_STATE_ROUTING_2:
@@ -75,10 +81,8 @@ export default (state = defaultState, { type, payload }) => {
     case CHANGE_STATE_ROUTING_3:
       return {
         ...state,
-      };
-    case CHANGE_STATE_ROUTING_4:
-      return {
-        ...state,
+        stateRouting: [true, true, true, true],
+        statePage: [true, true, true, false],
       };
     case CHANGE_STATE_PAGES_0:
       return {
@@ -95,24 +99,16 @@ export default (state = defaultState, { type, payload }) => {
         ...state,
         statePage: [true, true, true, false],
       };
-    case CHANGE_STATE_PAGES_3:
-      return {
-        ...state,
-        statePage: [true, true, true, true],
-      };
-    case CHANGE_STATE_PAGES_4:
-      return {
-        ...state,
-        statePage: [true, false, false, false],
-      };
     default:
       return { ...state };
   }
 };
 
-export const changeStateRouting = (type, data = {}) => (dispatch) => {
-  dispatch({ type, payload: { ...data } });
-};
+export const changeStateRouting =
+  (type, data = {}) =>
+  (dispatch) => {
+    dispatch({ type, payload: { ...data } });
+  };
 
 export const changeStatePage = (type) => (dispatch) => {
   dispatch({ type });
