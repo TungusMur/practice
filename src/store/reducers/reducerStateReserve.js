@@ -47,8 +47,8 @@ export default (state = defaultState, { type, payload }) => {
           dateTo: '',
           tariff: '',
           fullTank: '',
-          childSeat: '',
           rightHand: '',
+          childSeat: '',
         },
       };
     case CHANGE_STATE_ROUTING_1:
@@ -64,8 +64,8 @@ export default (state = defaultState, { type, payload }) => {
           dateTo: '',
           tariff: '',
           fullTank: '',
-          childSeat: '',
           rightHand: '',
+          childSeat: '',
         },
       };
     case CHANGE_STATE_ROUTING_2:

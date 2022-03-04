@@ -50,6 +50,30 @@ const Ticket = ({ dataTicket }) => {
           </div>
         </div>
       ) : null}
+      {dataTicket.fullTank ? (
+        <div className="bookingTicket-fullTank">
+          <h5>Полный бак</h5>
+          <div className="bookingTicket-fullTank__content">
+            <h5>Да</h5>
+          </div>
+        </div>
+      ) : null}
+      {dataTicket.childSeat ? (
+        <div className="bookingTicket-childSeat">
+          <h5>Детское кресло</h5>
+          <div className="bookingTicket-childSeat__content">
+            <h5>Да</h5>
+          </div>
+        </div>
+      ) : null}
+      {dataTicket.rightHand ? (
+        <div className="bookingTicket-rightHand">
+          <h5>Правый руль</h5>
+          <div className="bookingTicket-rightHand__content">
+            <h5>Да</h5>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 };
