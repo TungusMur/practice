@@ -2,6 +2,10 @@ import React, { useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate, useParams } from 'react-router-dom';
 import PrimaryMain from '../PrimaryMain';
 import Booking from '../Booking';
+import SelectLocation from '../Pages/SelectLocation';
+import SelectModel from '../Pages/SelectModel';
+import SelectAdditionally from '../Pages/SelectAdditionally';
+import SelectResult from '../Pages/SelectResult';
 import NotFound from '../NotFound';
 import './styles.scss';
 
@@ -20,7 +24,12 @@ const Main = () => {
     <main>
       <Routes>
         <Route index element={<PrimaryMain />} />
-        <Route path="reserve" element={<Booking />} />
+        <Route path="reserve" element={<Booking />}>
+          <Route path="location" element={<SelectLocation />} />
+          <Route path="model" element={<SelectModel />} />
+          <Route path="additionally" element={<SelectAdditionally />} />
+          <Route path="result" element={<SelectResult />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </main>

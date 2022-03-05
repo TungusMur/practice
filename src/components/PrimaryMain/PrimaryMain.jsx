@@ -30,7 +30,7 @@ const PrimaryMain = () => {
           <button
             className="primaryMain-booking__button button-classic"
             onClick={() => {
-              navigation(`/${params.lang}/reserve`);
+              navigation(`/${params.lang}/reserve/location`);
             }}
           >
             {params.lang === 'en' ? 'Reserve' : 'Забронировать'}

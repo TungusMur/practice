@@ -1,30 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { Outlet, useParams, useNavigate, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { bookingPageItems } from './constants';
+import { changeStateRouting } from '../../redux/reducers/reducerStateBooking';
+import { bookingNavigationItems } from './constants';
 import MainHeader from '../../common/MainHeader';
-import BookingPageItems from '../BookingPageItems';
 import Ticket from '../Ticket';
-import { changeStateRouting } from '../../store/reducers/reducerStateReserve';
 
 const Booking = ({ stateRouting, statePage, changeStateRouting }) => {
   const [bookingPageActive, setBookingPageActive] = useState(0);
+  const location = useLocation();
+  const navigation = useNavigate();
   const params = useParams();
+
+  useEffect(() => {
+    if (location.pathname === '/ru/reserve') {
+      navigation(`/${params.lang}/reserve/location`);
+    }
+  }, []);
 
   return (
     <div className="booking">
       <MainHeader />
       <div className="booking-form">
-        <div className="booking-pagesMap">
-          {bookingPageItems.map((item, index) => (
+        <div className="booking-navigation">
+          {bookingNavigationItems.map((item, index) => (
             <div
-              key={`${item.id}booking-pagesMap__item`}
-              className={`booking-pagesMap__item ${stateRouting[index]} ${index === bookingPageActive ? 'active' : ''}`}
+              key={`${item.id}booking-navigation__item`}
+              className={`booking-navigation__item ${stateRouting[index]} ${
+                index === bookingPageActive ? 'active' : ''
+              }`}
             >
               <button
                 onClick={() => {
                   if (stateRouting[index]) {
                     setBookingPageActive(index);
+                    navigation(item.link);
                   }
                 }}
               >
@@ -34,19 +44,18 @@ const Booking = ({ stateRouting, statePage, changeStateRouting }) => {
           ))}
         </div>
         <div className="booking-content">
-          <BookingPageItems bookingPageActive={bookingPageActive} />
+          <Outlet />
           <Ticket />
           <button
             onClick={() => {
               if (statePage[bookingPageActive]) {
-                setBookingPageActive((state) => {
-                  return (state += 1);
-                });
+                setBookingPageActive((state) => (state += 1));
+                navigation(bookingNavigationItems[bookingPageActive + 1].link);
                 changeStateRouting(`CHANGE_STATE_ROUTING_${bookingPageActive + 1}`);
               }
             }}
           >
-            {bookingPageItems[bookingPageActive][`${params.lang}ButtonContent`]}
+            {bookingNavigationItems[bookingPageActive][`${params.lang}ButtonContent`]}
           </button>
         </div>
       </div>
@@ -56,8 +65,8 @@ const Booking = ({ stateRouting, statePage, changeStateRouting }) => {
 
 export default connect(
   (data) => ({
-    stateRouting: data.reducerStateReserve.stateRouting,
-    statePage: data.reducerStateReserve.statePage,
+    stateRouting: data.reducerStateBooking.stateRouting,
+    statePage: data.reducerStateBooking.statePage,
   }),
   { changeStateRouting }
 )(Booking);

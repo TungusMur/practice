@@ -1,18 +1,13 @@
-import axios from 'axios';
-
-export const CHANGE_STATE_PAGES_0 = 'CHANGE_STATE_PAGES_0';
-export const CHANGE_STATE_PAGES_1 = 'CHANGE_STATE_PAGES_1';
-export const CHANGE_STATE_PAGES_2 = 'CHANGE_STATE_PAGES_2';
-export const CHANGE_STATE_PAGES_3 = 'CHANGE_STATE_PAGES_3';
-export const CHANGE_STATE_PAGES_4 = 'CHANGE_STATE_PAGES_4';
-export const CHANGE_STATE_PAGES_5 = 'CHANGE_STATE_PAGES_5';
-
-export const CHANGE_STATE_ROUTING_0 = 'CHANGE_STATE_ROUTING_0';
-export const CHANGE_STATE_ROUTING_1 = 'CHANGE_STATE_ROUTING_1';
-export const CHANGE_STATE_ROUTING_2 = 'CHANGE_STATE_ROUTING_2';
-export const CHANGE_STATE_ROUTING_3 = 'CHANGE_STATE_ROUTING_3';
-export const CHANGE_STATE_ROUTING_4 = 'CHANGE_STATE_ROUTING_4';
-export const CHANGE_STATE_ROUTING_5 = 'CHANGE_STATE_ROUTING_5';
+import {
+  CHANGE_STATE_ROUTING_0,
+  CHANGE_STATE_ROUTING_1,
+  CHANGE_STATE_ROUTING_2,
+  CHANGE_STATE_ROUTING_3,
+  CHANGE_STATE_PAGES_RESET,
+  CHANGE_STATE_PAGES_0,
+  CHANGE_STATE_PAGES_1,
+  CHANGE_STATE_PAGES_2,
+} from '../action';
 
 const defaultState = {
   stateRouting: [true, false, false, false],
@@ -84,6 +79,11 @@ export default (state = defaultState, { type, payload }) => {
         stateRouting: [true, true, true, true],
         statePage: [true, true, true, false],
       };
+    case CHANGE_STATE_PAGES_RESET:
+      return {
+        ...state,
+        statePage: [false, false, false, false],
+      };
     case CHANGE_STATE_PAGES_0:
       return {
         ...state,
@@ -110,6 +110,8 @@ export const changeStateRouting =
     dispatch({ type, payload: { ...data } });
   };
 
-export const changeStatePage = (type) => (dispatch) => {
-  dispatch({ type });
-};
+export const changeStatePage =
+  (type = CHANGE_STATE_PAGES_RESET) =>
+  (dispatch) => {
+    dispatch({ type });
+  };

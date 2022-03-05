@@ -5,7 +5,7 @@ const Ticket = ({ dataTicket }) => {
   return (
     <div className="bookingTicket">
       <h6>Ваш заказ</h6>
-      {dataTicket.city && dataTicket.deliveryPoint ? (
+      {dataTicket.city && dataTicket.deliveryPoint && (
         <div className="bookingTicket-address">
           <h5>Пункт выдачи</h5>
           <div className="bookingTicket-address__content">
@@ -17,65 +17,65 @@ const Ticket = ({ dataTicket }) => {
             </div>
           </div>
         </div>
-      ) : null}
-      {dataTicket.car ? (
+      )}
+      {dataTicket.car && (
         <div className="bookingTicket-car">
           <h5>Модель</h5>
           <div className="bookingTicket-car__content">
             <h5>{dataTicket.car}</h5>
           </div>
         </div>
-      ) : null}
-      {dataTicket.color ? (
+      )}
+      {dataTicket.color && (
         <div className="bookingTicket-color">
           <h5>Цвет</h5>
           <div className="bookingTicket-color__content">
             <h5>{dataTicket.color}</h5>
           </div>
         </div>
-      ) : null}
-      {dataTicket.dateFrom && dataTicket.dateTo ? (
+      )}
+      {dataTicket.dateFrom && dataTicket.dateTo && (
         <div className="bookingTicket-date">
           <h5>Длительность аренды</h5>
           <div className="bookingTicket-date__content">
             <h5>-</h5>
           </div>
         </div>
-      ) : null}
-      {dataTicket.tariff ? (
+      )}
+      {dataTicket.tariff && (
         <div className="bookingTicket-tariff">
           <h5>Тариф</h5>
           <div className="bookingTicket-tariff__content">
             <h5>{dataTicket.tariff}</h5>
           </div>
         </div>
-      ) : null}
-      {dataTicket.fullTank ? (
+      )}
+      {dataTicket.fullTank && (
         <div className="bookingTicket-fullTank">
           <h5>Полный бак</h5>
           <div className="bookingTicket-fullTank__content">
             <h5>Да</h5>
           </div>
         </div>
-      ) : null}
-      {dataTicket.childSeat ? (
+      )}
+      {dataTicket.childSeat && (
         <div className="bookingTicket-childSeat">
           <h5>Детское кресло</h5>
           <div className="bookingTicket-childSeat__content">
             <h5>Да</h5>
           </div>
         </div>
-      ) : null}
-      {dataTicket.rightHand ? (
+      )}
+      {dataTicket.rightHand && (
         <div className="bookingTicket-rightHand">
           <h5>Правый руль</h5>
           <div className="bookingTicket-rightHand__content">
             <h5>Да</h5>
           </div>
         </div>
-      ) : null}
+      )}
     </div>
   );
 };
 
-export default connect((data) => ({ dataTicket: data.reducerStateReserve.data }))(Ticket);
+export default connect((data) => ({ dataTicket: data.reducerStateBooking.data }))(Ticket);
