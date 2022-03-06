@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { changeStateRouting, changeStatePage } from '../../redux/reducers/reducerStateBooking';
-import { CHANGE_STATE_ROUTING_0, CHANGE_STATE_PAGES_0 } from '../../redux/action';
+import { changeStateRouting, changeStatePage } from '../../../redux/reducers/reducerStateBooking';
+import { CHANGE_STATE_ROUTING_0, CHANGE_STATE_PAGES_0 } from '../../../redux/action';
 
 const SelectLocation = ({ dataTicket, changeStateRouting, changeStatePage }) => {
   const [city, setCity] = useState(dataTicket.city);
