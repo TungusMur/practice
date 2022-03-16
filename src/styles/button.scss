@@ -68,12 +68,24 @@ button {
 .button-classic {
   background: linear-gradient(90deg, hsl(148, 87%, 41%) 2.61%, hsl(158, 96%, 32%) 112.6%);
 
+  &.notActive {
+    background: #eeeeee;
+  }
+
   &:hover {
     background: linear-gradient(90deg, hsl(148, 87%, 31%) 2.61%, hsl(158, 96%, 22%) 112.6%);
+
+    &.notActive {
+      background: #eeeeee;
+    }
   }
 
   &:active {
     background: linear-gradient(90deg, hsl(148, 87%, 21%) 2.61%, hsl(158, 96%, 12%) 112.6%);
+
+    &.notActive {
+      background: #eeeeee;
+    }
   }
 }
 

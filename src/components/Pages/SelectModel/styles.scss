@@ -1,0 +1,97 @@
+// .bookingPage-filter input[type='radio']:checked::after {
+
+.bookingPage-filter {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+  width: 279px;
+}
+
+.bookingPage-filter__item {
+  align-items: center;
+  display: flex;
+
+  & p {
+    color: #999999;
+  }
+
+  &.active {
+    & p {
+      color: #121212;
+    }
+  }
+}
+
+#filterCar {
+  align-items: center;
+  appearance: none;
+  display: flex;
+  height: 12px;
+  justify-content: center;
+  margin: 0;
+  margin-right: 8px;
+  outline: none;
+  position: relative;
+  width: 12px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+#filterCar:checked::after {
+  background: none;
+  border-radius: 10px;
+  border: 3.5px solid #0ec261;
+  content: '';
+  height: 5px;
+  position: absolute;
+  width: 5px;
+}
+
+#filterCar::before {
+  background: none;
+  border-radius: 10px;
+  border: 1px solid #999999;
+  content: '';
+  height: 10px;
+  position: absolute;
+  width: 10px;
+}
+
+.bookingPage-cars {
+  display: flex;
+  flex-wrap: wrap;
+  height: 80vh;
+  margin-top: 48px;
+  overflow: scroll;
+  width: 736px;
+}
+
+.bookingPage-cars__item {
+  border: 1px solid #eeeeee;
+  height: 224px;
+  overflow: hidden;
+  position: relative;
+  width: 366px;
+
+  & img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.bookingPage-info {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+  position: absolute;
+  top: 0;
+}
+
+.bookingPage-name {
+  font-weight: 400;
+}
+
+.bookingPage-price {
+  color: #999999;
+  display: flex;
+}

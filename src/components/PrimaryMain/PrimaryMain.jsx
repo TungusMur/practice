@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Slider from '../Slider';
 import MainHeader from '../../common/MainHeader';
 import '../../styles/button.scss';
@@ -7,6 +7,7 @@ import './styles.scss';
 
 const PrimaryMain = () => {
   const params = useParams();
+  const navigation = useNavigate();
 
   return (
     <div className="primaryMain">
@@ -26,16 +27,21 @@ const PrimaryMain = () => {
                 : 'Поминутная аренда авто твоего города'}
             </h6>
           </div>
-          <button className="primaryMain-booking__button button-classic">
+          <button
+            className="primaryMain-booking__button button-classic"
+            onClick={() => {
+              navigation(`/${params.lang}/reserve/location`);
+            }}
+          >
             {params.lang === 'en' ? 'Reserve' : 'Забронировать'}
           </button>
         </div>
         <div className="primaryMain-booking__footer">
           <div className="primaryMain-booking__life">
-            <h5>© 2016-2019 «Need for drive»</h5>
+            <p>© 2016-2019 «Need for drive»</p>
           </div>
           <div className="primaryMain-booking__phone">
-            <h5>8 (495) 234-22-44</h5>
+            <p>8 (495) 234-22-44</p>
           </div>
         </div>
       </div>
