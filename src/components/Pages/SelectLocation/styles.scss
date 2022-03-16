@@ -1,0 +1,96 @@
+.selectLocation {
+  @media screen and (max-width: 1439px) {
+    width: 66%;
+  }
+  @media screen and (max-width: 1023px) {
+    width: auto;
+  }
+}
+
+.selectLocation-address {
+  //   align-items: flex-end;
+  //   display: flex;
+  //   flex-direction: column;
+  margin: 32px 0 45px;
+}
+
+.selectLocation-city,
+.selectLocation-deliveryPoint {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 13px;
+  width: 325px;
+
+  & input {
+    border: 0;
+    border-bottom: 1px solid #999999;
+    font-family: 'Roboto-Normal';
+    font-size: 14px;
+    margin-left: 7px;
+    padding: 0;
+    padding-bottom: 1px;
+    padding-left: 8px;
+    width: 216px;
+
+    &:hover {
+      outline: 0;
+    }
+
+    @media screen and (max-width: 767px) {
+      width: 179px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    margin: 20px 0px;
+    width: 289px;
+  }
+}
+
+.selectLocation-button {
+  display: none;
+
+  &.active {
+    align-items: center;
+    background: none;
+    display: flex;
+    height: 20px;
+    justify-content: center;
+    position: absolute;
+    width: 20px;
+  }
+
+  &::after,
+  &::before {
+    background: #121212;
+    content: '';
+    height: 1.2px;
+    position: absolute;
+    width: 11.31px;
+  }
+
+  &::after {
+    top: 9.4px;
+    transform: rotate(45deg);
+  }
+
+  &::before {
+    bottom: 9.4px;
+    transform: rotate(-45deg);
+  }
+}
+
+.selectLocation-map__content {
+  margin-top: 16px;
+
+  & img {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 1439px) {
+    width: 97%;
+  }
+  @media screen and (max-width: 1023px) {
+    width: auto;
+  }
+}
