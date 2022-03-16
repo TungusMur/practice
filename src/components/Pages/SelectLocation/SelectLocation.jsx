@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { changeStateRouting, changeStatePage } from '../../../redux/reducers/reducerStateBooking';
 import { CHANGE_STATE_ROUTING_0, CHANGE_STATE_PAGES_0 } from '../../../redux/action';
+import Map from '../../../assets/img/Booking/Map.jpg';
+import './styles.scss';
 
 const SelectLocation = ({ dataTicket, changeStateRouting, changeStatePage }) => {
   const [city, setCity] = useState(dataTicket.city);
@@ -16,38 +18,55 @@ const SelectLocation = ({ dataTicket, changeStateRouting, changeStatePage }) => 
   });
 
   return (
-    <div className="bookingPage-location">
-      <div className="bookingPage-address">
-        <div className="bookingPage-city">
-          <h5>Город</h5>
+    <div className="selectLocation">
+      <div className="selectLocation-address">
+        <div className="selectLocation-city">
+          <p>Город</p>
           <input
             value={city}
+            placeholder="Начните вводить город ..."
             onChange={(e) => {
               setCity(e.target.value);
-              if (e.target.value.replace(/ /g, '')) {
+              if (e.target.value.replace(/ /g, ' ')) {
                 changeStateRouting(CHANGE_STATE_ROUTING_0, { city: e.target.value, deliveryPoint: '' });
                 setDeliveryPoint('');
               }
             }}
           />
+          <button
+            className={`selectLocation-button ${city && 'active'}`}
+            onClick={() => {
+              changeStateRouting(CHANGE_STATE_ROUTING_0, { city: '', deliveryPoint: '' });
+              setCity('');
+              setDeliveryPoint('');
+            }}
+          ></button>
         </div>
-        <div className="bookingPage-deliveryPoint">
-          <h5>Пункт выдачи</h5>
+        <div className="selectLocation-deliveryPoint">
+          <p>Пункт выдачи</p>
           <input
             value={deliveryPoint}
+            placeholder="Начните вводить пункт ..."
             onChange={(e) => {
               setDeliveryPoint(e.target.value);
-              if (e.target.value.replace(/ /g, '')) {
+              if (e.target.value.replace(/ /g, ' ')) {
                 changeStateRouting(CHANGE_STATE_ROUTING_0, { city, deliveryPoint: e.target.value });
               }
             }}
           />
+          <button
+            className={`selectLocation-button ${deliveryPoint && 'active'}`}
+            onClick={() => {
+              changeStateRouting(CHANGE_STATE_ROUTING_0, { deliveryPoint: '' });
+              setDeliveryPoint('');
+            }}
+          ></button>
         </div>
       </div>
-      <div className="bookingPage-location">
-        <div className="bookingPage-map">
-          <h5>Выбрать на карте</h5>
-          <div className="bookingPage-map__content"></div>
+      <div className="selectLocation-map">
+        <p>Выбрать на карте</p>
+        <div className="selectLocation-map__content">
+          <img alt="карта" src={Map} />
         </div>
       </div>
     </div>

@@ -38,10 +38,10 @@ const PrimaryMain = () => {
         </div>
         <div className="primaryMain-booking__footer">
           <div className="primaryMain-booking__life">
-            <h5>© 2016-2019 «Need for drive»</h5>
+            <p>© 2016-2019 «Need for drive»</p>
           </div>
           <div className="primaryMain-booking__phone">
-            <h5>8 (495) 234-22-44</h5>
+            <p>8 (495) 234-22-44</p>
           </div>
         </div>
       </div>

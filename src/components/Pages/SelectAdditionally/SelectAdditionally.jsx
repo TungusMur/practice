@@ -16,7 +16,7 @@ const SelectAdditionally = ({ dataTicket }) => {
     dataTicket.deliveryPoint && (
       <div className="bookingPage-additionally">
         <div className="bookingPage-color">
-          <h5>Цвет</h5>
+          <p>Цвет</p>
           <div className="bookingPage-color__content">
             <label>
               <input
@@ -27,25 +27,25 @@ const SelectAdditionally = ({ dataTicket }) => {
                   console.log(e.target.value);
                 }}
               />
-              <h5>Любой</h5>
+              <p>Любой</p>
             </label>
           </div>
         </div>
         <div className="bookingPage-date">
-          <h5>Дата аренды</h5>
+          <p>Дата аренды</p>
           <div className="bookingPage-date__content">
             <div className="bookingPage-dateFrom">
-              <h5>С</h5>
+              <p>С</p>
               <input type="date" />
             </div>
             <div className="bookingPage-dateTo">
-              <h5>По</h5>
+              <p>По</p>
               <input type="date" />
             </div>
           </div>
         </div>
         <div className="bookingPage-tarif">
-          <h5>Тариф</h5>
+          <p>Тариф</p>
           <div className="bookingPage-tarif__content">
             <label>
               <input
@@ -56,7 +56,7 @@ const SelectAdditionally = ({ dataTicket }) => {
                   console.log(e.target.value);
                 }}
               />
-              <h5>Поминутно, 7₽/мин</h5>
+              <p>Поминутно, 7₽/мин</p>
             </label>
             <label>
               <input
@@ -67,24 +67,24 @@ const SelectAdditionally = ({ dataTicket }) => {
                   console.log(e.target.value);
                 }}
               />
-              <h5>На сутки, 1999 ₽/сутки</h5>
+              <p>На сутки, 1999 ₽/сутки</p>
             </label>
           </div>
         </div>
         <div className="bookingPage-services">
-          <h5>Доп услуги</h5>
+          <p>Доп услуги</p>
           <div className="bookingPage-services__content">
             <label>
               <input type="checkbox" />
-              <h5>Полный бак, 500р</h5>
+              <p>Полный бак, 500р</p>
             </label>
             <label>
               <input type="checkbox" />
-              <h5>Детское кресло, 200р</h5>
+              <p>Детское кресло, 200р</p>
             </label>
             <label>
               <input type="checkbox" />
-              <h5>Правый руль, 1600р</h5>
+              <p>Правый руль, 1600р</p>
             </label>
           </div>
         </div>

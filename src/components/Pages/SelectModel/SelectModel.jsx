@@ -1,8 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { changeStateRouting, changeStatePage } from '../../../redux/reducers/reducerStateBooking';
+import { dataCars } from './constants';
+import './styles.scss';
 
-const SelectModel = ({ dataTicket }) => {
+const SelectModel = ({ dataTicket, changeStateRouting, changeStatePage }) => {
+  const [filter, setFilter] = useState('All');
   const navigation = useNavigate();
   const params = useParams();
 
@@ -17,44 +21,85 @@ const SelectModel = ({ dataTicket }) => {
     dataTicket.deliveryPoint && (
       <div className="bookingPage-model">
         <div className="bookingPage-filter">
-          <label>
+          <label className={`bookingPage-filter__item ${filter === 'All' ? 'active' : ''}`}>
             <input
+              id="filterCar"
               type="radio"
               name="filter-car"
-              value=""
+              value="All"
               onChange={(e) => {
-                console.log(e.target.value);
+                setFilter(e.target.value);
               }}
+              checked={filter === 'All'}
             />
-            <h5>Все модели</h5>
+            <p>Все модели</p>
           </label>
-          <label>
+          <label className={`bookingPage-filter__item ${filter === 'Eco' ? 'active' : ''}`}>
             <input
+              id="filterCar"
               type="radio"
               name="filter-car"
-              value="true"
+              value="Eco"
               onChange={(e) => {
-                console.log(e.target.value);
+                setFilter(e.target.value);
               }}
+              checked={filter === 'Eco'}
             />
-            <h5>Эконом</h5>
+            <p>Эконом</p>
           </label>
-          <label>
+          <label className={`bookingPage-filter__item ${filter === 'Vip' ? 'active' : ''}`}>
             <input
+              id="filterCar"
               type="radio"
               name="filter-car"
-              value="false"
+              value="Vip"
               onChange={(e) => {
-                console.log(e.target.value);
+                setFilter(e.target.value);
               }}
+              checked={filter === 'Vip'}
             />
-            <h5>Премиум</h5>
+            <p>Премиум</p>
           </label>
         </div>
-        <div className="bookingPage-cars"></div>
+        <div className="bookingPage-cars">
+          {dataCars.map((item) => (
+            <div className="bookingPage-cars__item" key={item.id}>
+              <button
+                className="bookingPage-cars__button"
+                onClick={() => {
+                  changeStateRouting('CHANGE_STATE_ROUTING_1', { car: item.name });
+                  changeStatePage('CHANGE_STATE_PAGES_1');
+                }}
+              >
+                <img alt={item.name} src={item.thumbnail.path} />
+                <div className="bookingPage-info">
+                  <div className="bookingPage-name">
+                    <h5>{item.name}</h5>
+                  </div>
+
+                  <div className="bookingPage-price">
+                    <div className="bookingPage-price__min">
+                      <p>{item.priceMin}</p>
+                    </div>
+                    <p>
+                      {'\u00A0'}-{'\u00A0'}
+                    </p>
+                    <div className="bookingPage-price__max">
+                      <p>{item.priceMax}</p>
+                    </div>
+                    <p>{'\u00A0'}₽</p>
+                  </div>
+                </div>
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     )
   );
 };
 
-export default connect((data) => ({ dataTicket: data.reducerStateBooking.data }))(SelectModel);
+export default connect((data) => ({ dataTicket: data.reducerStateBooking.data }), {
+  changeStateRouting,
+  changeStatePage,
+})(SelectModel);
