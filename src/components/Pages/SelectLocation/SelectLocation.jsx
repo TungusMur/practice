@@ -1,13 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { changeStateRouting, changeStatePage } from '../../../redux/reducers/reducerStateBooking';
+import { changeTicket, fetchPoints, resetPoints } from '../../../Actions';
 import { CHANGE_STATE_ROUTING_0, CHANGE_STATE_PAGES_0 } from '../../../redux/action';
 import Map from '../../../assets/img/Booking/Map.jpg';
+import { resetTicketDate } from './constants';
+import SearchList from '../../../components/SearchList';
 import './styles.scss';
 
-const SelectLocation = ({ dataTicket, changeStateRouting, changeStatePage }) => {
-  const [city, setCity] = useState(dataTicket.city);
-  const [deliveryPoint, setDeliveryPoint] = useState(dataTicket.deliveryPoint);
+const SelectLocation = ({
+  dataTicket,
+  dataCities,
+  dataPoints,
+  changeStateRouting,
+  changeStatePage,
+  changeTicket,
+  fetchPoints,
+  resetPoints,
+}) => {
+  const [focusCityActive, setFocusCityActive] = useState('');
+  const [focusPointActive, setFocusPointActive] = useState('');
+  const [valueCityInput, setValueCityInput] = useState(dataTicket.deliveryPoint.address || '');
+  const [valuePointInput, setValuePointInput] = useState(dataTicket.city.name || '');
+
+  const focusDisActive = useCallback((e) => {
+    if (e.target.className !== 'selectLocation-city__input') {
+      setFocusCityActive('');
+    }
+    if (e.target.className !== 'selectLocation-deliveryPoint__input') {
+      setFocusPointActive('');
+    }
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener('click', focusDisActive);
+
+    return () => {
+      document.removeEventListener('click', focusDisActive);
+    };
+  }, []);
 
   useEffect(() => {
     if (dataTicket.city && dataTicket.deliveryPoint) {
@@ -15,7 +46,7 @@ const SelectLocation = ({ dataTicket, changeStateRouting, changeStatePage }) => 
     } else {
       changeStatePage();
     }
-  });
+  }, [dataTicket.city, dataTicket.deliveryPoint]);
 
   return (
     <div className="selectLocation">
@@ -23,42 +54,76 @@ const SelectLocation = ({ dataTicket, changeStateRouting, changeStatePage }) => 
         <div className="selectLocation-city">
           <p>Город</p>
           <input
-            value={city}
+            className="selectLocation-city__input"
+            value={valueCityInput}
             placeholder="Начните вводить город ..."
             onChange={(e) => {
-              setCity(e.target.value);
-              if (e.target.value.replace(/ /g, ' ')) {
-                changeStateRouting(CHANGE_STATE_ROUTING_0, { city: e.target.value, deliveryPoint: '' });
-                setDeliveryPoint('');
-              }
+              setValueCityInput(e.target.value);
+            }}
+            onFocus={() => {
+              setFocusCityActive('active');
+            }}
+          />
+          <SearchList
+            status={focusCityActive && 'active'}
+            data={dataCities}
+            valueInput={valueCityInput}
+            setValueInput={setValueCityInput}
+            onClick={(e) => {
+              changeTicket({
+                city: { ...e },
+                deliveryPoint: '',
+                ...resetTicketDate,
+              });
+              fetchPoints(e.id);
+              changeStateRouting(CHANGE_STATE_ROUTING_0);
             }}
           />
           <button
-            className={`selectLocation-button ${city && 'active'}`}
+            className={`selectLocation-button ${valueCityInput && 'active'}`}
             onClick={() => {
-              changeStateRouting(CHANGE_STATE_ROUTING_0, { city: '', deliveryPoint: '' });
-              setCity('');
-              setDeliveryPoint('');
+              changeTicket({ city: '', deliveryPoint: '', ...resetTicketDate });
+              changeStateRouting(CHANGE_STATE_ROUTING_0);
+              resetPoints();
+              setValueCityInput('');
+              setValuePointInput('');
             }}
           ></button>
         </div>
         <div className="selectLocation-deliveryPoint">
           <p>Пункт выдачи</p>
           <input
-            value={deliveryPoint}
+            className="selectLocation-deliveryPoint__input"
+            value={valuePointInput}
             placeholder="Начните вводить пункт ..."
             onChange={(e) => {
-              setDeliveryPoint(e.target.value);
-              if (e.target.value.replace(/ /g, ' ')) {
-                changeStateRouting(CHANGE_STATE_ROUTING_0, { city, deliveryPoint: e.target.value });
-              }
+              setValuePointInput(e.target.value);
+            }}
+            onFocus={() => {
+              setFocusPointActive('active');
             }}
           />
+          {dataTicket.city && (
+            <SearchList
+              status={focusPointActive && 'active'}
+              data={dataPoints}
+              valueInput={valuePointInput}
+              setValueInput={setValuePointInput}
+              onClick={(e) => {
+                changeTicket({
+                  deliveryPoint: { ...e },
+                  ...resetTicketDate,
+                });
+                changeStateRouting(CHANGE_STATE_ROUTING_0);
+              }}
+            />
+          )}
           <button
-            className={`selectLocation-button ${deliveryPoint && 'active'}`}
+            className={`selectLocation-button ${valuePointInput && 'active'}`}
             onClick={() => {
-              changeStateRouting(CHANGE_STATE_ROUTING_0, { deliveryPoint: '' });
-              setDeliveryPoint('');
+              changeTicket({ deliveryPoint: '', ...resetTicketDate });
+              changeStateRouting(CHANGE_STATE_ROUTING_0);
+              setValuePointInput('');
             }}
           ></button>
         </div>
@@ -73,7 +138,17 @@ const SelectLocation = ({ dataTicket, changeStateRouting, changeStatePage }) => 
   );
 };
 
-export default connect((data) => ({ dataTicket: data.reducerStateBooking.data }), {
-  changeStateRouting,
-  changeStatePage,
-})(SelectLocation);
+export default connect(
+  (data) => ({
+    dataTicket: data.reducerTicketData,
+    dataCities: data.reducerСitiesData,
+    dataPoints: data.reducerPointsData,
+  }),
+  {
+    changeStateRouting,
+    changeStatePage,
+    changeTicket,
+    fetchPoints,
+    resetPoints,
+  }
+)(SelectLocation);

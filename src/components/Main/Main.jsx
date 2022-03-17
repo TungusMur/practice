@@ -8,11 +8,21 @@ import SelectAdditionally from '../Pages/SelectAdditionally';
 import SelectResult from '../Pages/SelectResult';
 import NotFound from '../NotFound';
 import './styles.scss';
+import { connect } from 'react-redux';
+import { fetchCars, fetchCities, fetchCategories, fetchRates, fetchDraft } from '../../Actions';
 
-const Main = () => {
+const Main = ({ fetchCars, fetchCities, fetchCategories, fetchRates, fetchDraft }) => {
   const location = useLocation();
   const navigation = useNavigate();
   const params = useParams();
+
+  useEffect(() => {
+    fetchDraft();
+    fetchCategories();
+    fetchRates();
+    fetchCars();
+    fetchCities();
+  }, []);
 
   useEffect(() => {
     if (params.lang !== 'en' && params.lang !== 'ru') {
@@ -36,4 +46,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default connect(null, { fetchCars, fetchCities, fetchCategories, fetchRates, fetchDraft })(Main);

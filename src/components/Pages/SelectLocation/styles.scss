@@ -8,9 +8,6 @@
 }
 
 .selectLocation-address {
-  //   align-items: flex-end;
-  //   display: flex;
-  //   flex-direction: column;
   margin: 32px 0 45px;
 }
 
@@ -19,6 +16,7 @@
   display: flex;
   justify-content: flex-end;
   margin-bottom: 13px;
+  position: relative;
   width: 325px;
 
   & input {
@@ -32,8 +30,8 @@
     padding-left: 8px;
     width: 216px;
 
-    &:hover {
-      outline: 0;
+    &:focus {
+      outline: 0px;
     }
 
     @media screen and (max-width: 767px) {

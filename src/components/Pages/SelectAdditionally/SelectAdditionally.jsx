@@ -1,96 +1,73 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import SettingColor from '../../../components/SettingColor';
+import SettingDate from '../../../components/SettingDate';
+import SettingTariff from '../../../components/SettingTariff';
+import SettingServices from '../../../components/SettingServices';
+import { TariffTime } from './constants';
 import { connect } from 'react-redux';
+import { changeStatePage } from '../../../redux/reducers/reducerStateBooking';
+import { changeTicket } from '../../../Actions';
+import { CHANGE_STATE_PAGES_2, CHANGE_STATE_PAGES_1 } from '../../../redux/action';
+import './styles.scss';
 
-const SelectAdditionally = ({ dataTicket }) => {
+const SelectAdditionally = ({ dataTicket, dataRates, changeTicket, changeStatePage }) => {
   const navigation = useNavigate();
   const params = useParams();
+
+  useEffect(() => {
+    if (dataRates.loading && !(dataTicket.color && dataTicket.tariff)) {
+      changeTicket({ color: 'Любой', tariff: dataRates.data[0] });
+    }
+  }, [dataRates]);
 
   useEffect(() => {
     if (!(dataTicket.city && dataTicket.deliveryPoint)) {
       navigation(`/${params.lang}/reserve/location`);
     }
   }, []);
+
+  useEffect(() => {
+    if (
+      dataTicket.color &&
+      dataTicket.dateFrom &&
+      dataTicket.dateTo &&
+      dataTicket.tariff &&
+      dataTicket.price <= dataTicket.priceMax &&
+      dataTicket.price >= dataTicket.priceMin
+    ) {
+      changeStatePage(CHANGE_STATE_PAGES_2);
+    } else {
+      changeStatePage(CHANGE_STATE_PAGES_1);
+    }
+  }, [dataTicket.color, dataTicket.dateFrom, dataTicket.dateTo, dataTicket.tariff, dataTicket.price]);
+
+  useEffect(() => {
+    if (dataTicket.dateFrom && dataTicket.dateTo) {
+      changeTicket({
+        price:
+          Math.ceil(
+            (new Date(dataTicket.dateTo).getTime() - new Date(dataTicket.dateFrom).getTime()) /
+              TariffTime[dataTicket.tariff.rateTypeId.unit]
+          ) * dataTicket.tariff.price,
+      });
+    }
+  }, [dataTicket.dateFrom, dataTicket.dateTo, dataTicket.tariff]);
+
   return (
     dataTicket.city &&
     dataTicket.deliveryPoint && (
-      <div className="bookingPage-additionally">
-        <div className="bookingPage-color">
-          <p>Цвет</p>
-          <div className="bookingPage-color__content">
-            <label>
-              <input
-                type="radio"
-                name="filter-color"
-                value=""
-                onChange={(e) => {
-                  console.log(e.target.value);
-                }}
-              />
-              <p>Любой</p>
-            </label>
-          </div>
-        </div>
-        <div className="bookingPage-date">
-          <p>Дата аренды</p>
-          <div className="bookingPage-date__content">
-            <div className="bookingPage-dateFrom">
-              <p>С</p>
-              <input type="date" />
-            </div>
-            <div className="bookingPage-dateTo">
-              <p>По</p>
-              <input type="date" />
-            </div>
-          </div>
-        </div>
-        <div className="bookingPage-tarif">
-          <p>Тариф</p>
-          <div className="bookingPage-tarif__content">
-            <label>
-              <input
-                type="radio"
-                name="filter-tarif"
-                value=""
-                onChange={(e) => {
-                  console.log(e.target.value);
-                }}
-              />
-              <p>Поминутно, 7₽/мин</p>
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="filter-tarif"
-                value=""
-                onChange={(e) => {
-                  console.log(e.target.value);
-                }}
-              />
-              <p>На сутки, 1999 ₽/сутки</p>
-            </label>
-          </div>
-        </div>
-        <div className="bookingPage-services">
-          <p>Доп услуги</p>
-          <div className="bookingPage-services__content">
-            <label>
-              <input type="checkbox" />
-              <p>Полный бак, 500р</p>
-            </label>
-            <label>
-              <input type="checkbox" />
-              <p>Детское кресло, 200р</p>
-            </label>
-            <label>
-              <input type="checkbox" />
-              <p>Правый руль, 1600р</p>
-            </label>
-          </div>
-        </div>
+      <div className="selectAdditionally-additionally">
+        <SettingColor />
+        <SettingDate />
+        <SettingTariff />
+        <SettingServices />
       </div>
     )
   );
 };
 
-export default connect((data) => ({ dataTicket: data.reducerStateBooking.data }))(SelectAdditionally);
+export default connect((data) => ({ dataTicket: data.reducerTicketData, dataRates: data.reducerRatesData }), {
+  changeTicket,
+  changeStatePage,
+})(SelectAdditionally);

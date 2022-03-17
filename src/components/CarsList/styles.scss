@@ -1,0 +1,19 @@
+.сarsItems {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 48px;
+  margin-bottom: 24px;
+  overflow: scroll;
+  width: 736px;
+
+  @media screen and (max-width: 1439px) {
+    margin-top: 5px;
+    margin-bottom: 12px;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 0px;
+  }
+}

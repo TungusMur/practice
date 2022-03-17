@@ -56,6 +56,7 @@ const Header = () => {
                     to={`/${params.lang}/${item.link}`}
                     onClick={() => {
                       setStatusHeaderClick('');
+                      window.scrollTo(0, 0);
                     }}
                   >
                     <h3>{item[`${params.lang}Chapter`]}</h3>
