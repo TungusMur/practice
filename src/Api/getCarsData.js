@@ -1,6 +1,3 @@
-import axios from 'axios';
+import { api } from './api';
 
-export const getCarsData = () =>
-  axios.get('https://api-factory.simbirsoft1.com/api/db/car', {
-    headers: { 'X-Api-Factory-Application-Id': '5e25c641099b810b946c5d5b' },
-  });
+export const getCarsData = () => api.get('https://api-factory.simbirsoft1.com/api/db/car');

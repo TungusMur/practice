@@ -10,6 +10,7 @@ const Ticket = ({
   bookingNavigationItems,
   dataTicket,
   statePage,
+  stateRouting,
   changeStateRouting,
 }) => {
   const navigation = useNavigate();
@@ -28,7 +29,7 @@ const Ticket = ({
         <div className="ticket-description">
           <h5>Ваш заказ:</h5>
         </div>
-        {dataTicket.city && dataTicket.deliveryPoint && (
+        {dataTicket.city && dataTicket.deliveryPoint && stateRouting[0] && (
           <div className="ticket-address">
             <p>Пункт выдачи</p>
             <div className="ticket-address__content">
@@ -41,7 +42,7 @@ const Ticket = ({
             </div>
           </div>
         )}
-        {dataTicket.car && (
+        {dataTicket.car && stateRouting[1] && (
           <div className="ticket-car">
             <p>Модель</p>
             <div className="ticket-car__content">
@@ -49,7 +50,7 @@ const Ticket = ({
             </div>
           </div>
         )}
-        {dataTicket.color && (
+        {dataTicket.color && stateRouting[2] && (
           <div className="ticket-color">
             <p>Цвет</p>
             <div className="ticket-color__content">
@@ -57,7 +58,7 @@ const Ticket = ({
             </div>
           </div>
         )}
-        {dataTicket.dateFrom && dataTicket.dateTo && (
+        {dataTicket.dateFrom && dataTicket.dateTo && stateRouting[2] && (
           <div className="ticket-date">
             <p>Длительность аренды</p>
             <div className="ticket-date__content">
@@ -82,7 +83,7 @@ const Ticket = ({
             </div>
           </div>
         )}
-        {dataTicket.tariff && (
+        {dataTicket.tariff && stateRouting[2] && (
           <div className="ticket-tariff">
             <p>Тариф</p>
             <div className="ticket-tariff__content">
@@ -90,7 +91,7 @@ const Ticket = ({
             </div>
           </div>
         )}
-        {dataTicket.fullTank && (
+        {dataTicket.fullTank && stateRouting[2] && (
           <div className="ticket-fullTank">
             <p>Полный бак</p>
             <div className="ticket-fullTank__content">
@@ -98,7 +99,7 @@ const Ticket = ({
             </div>
           </div>
         )}
-        {dataTicket.childSeat && (
+        {dataTicket.childSeat && stateRouting[2] && (
           <div className="ticket-childSeat">
             <p>Детское кресло</p>
             <div className="ticket-childSeat__content">
@@ -106,7 +107,7 @@ const Ticket = ({
             </div>
           </div>
         )}
-        {dataTicket.rightHand && (
+        {dataTicket.rightHand && stateRouting[2] && (
           <div className="ticket-rightHand">
             <p>Правый руль</p>
             <div className="ticket-rightHand__content">
@@ -114,30 +115,34 @@ const Ticket = ({
             </div>
           </div>
         )}
-        <div className="ticket-price">
-          <div className="ticket-price__content">
-            <h5>Цена:</h5>
-            {dataTicket.price ? (
-              <h5 className="ticket-price__info">
-                {dataTicket.price +
-                  (dataTicket.fullTank && 500) +
-                  (dataTicket.childSeat && 200) +
-                  (dataTicket.rightHand && 1600)}{' '}
-                ₽
-              </h5>
-            ) : (
-              <h5 className="ticket-price__info">
-                от {dataTicket.priceMin} до {dataTicket.priceMax} ₽
-              </h5>
-            )}
+        {(Boolean(dataTicket.price) || (Boolean(dataTicket.priceMin) && Boolean(dataTicket.priceMax))) && stateRouting[1] && (
+          <div className="ticket-price">
+            <div className="ticket-price__content">
+              <h5>Цена:</h5>
+              {Boolean(dataTicket.price) && (
+                <h5 className="ticket-price__info">
+                  {dataTicket.price +
+                    (dataTicket.fullTank && 500) +
+                    (dataTicket.childSeat && 200) +
+                    (dataTicket.rightHand && 1600)}{' '}
+                  ₽
+                </h5>
+              )}
+              {!Boolean(dataTicket.price) && Boolean(dataTicket.priceMin) && Boolean(dataTicket.priceMax) && (
+                <h5 className="ticket-price__info">
+                  от {dataTicket.priceMin} до {dataTicket.priceMax} ₽
+                </h5>
+              )}
+            </div>
+            {Boolean(dataTicket.price) &&
+              !(dataTicket.price <= dataTicket.priceMax && dataTicket.price >= dataTicket.priceMin) && (
+                <p className="ticket-price__error">
+                  Сумма заказ не должна быть меньше {dataTicket.priceMin} ₽ или больше {dataTicket.priceMax} ₽,
+                  поменяйте пожалуйста параметры аренды
+                </p>
+              )}
           </div>
-          {Boolean(dataTicket.price) && !(dataTicket.price <= dataTicket.priceMax && dataTicket.price >= dataTicket.priceMin) && (
-            <p className="ticket-price__error">
-              Сумма заказ не должна быть меньше {dataTicket.priceMin} ₽ или больше {dataTicket.priceMax} ₽, поменяйте
-              пожалуйста параметры аренды
-            </p>
-          )}
-        </div>
+        )}
       </div>
       <button
         className={`ticket__button button-classic ${statePage[bookingPageActive] || 'notActive'}`}
@@ -157,6 +162,10 @@ const Ticket = ({
 };
 
 export default connect(
-  (data) => ({ dataTicket: data.reducerTicketData, statePage: data.reducerStateBooking.statePage }),
+  (data) => ({
+    dataTicket: data.reducerTicketData,
+    statePage: data.reducerStateBooking.statePage,
+    stateRouting: data.reducerStateBooking.stateRouting,
+  }),
   { changeStateRouting }
 )(Ticket);

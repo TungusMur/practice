@@ -11,6 +11,22 @@
   top: 19px;
   width: 222px;
   z-index: 1;
+
+  &::-webkit-scrollbar {
+    outline: 1px solid #eeeeee;
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #999999;
+    border: 1px solid #ffffff;
+    border-radius: 2px;
+  }
+
   &.active {
     display: block;
   }

@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { TariffTime } from './constants';
 import { CHANGE_STATE_ROUTING_2 } from '../../redux/action';
 import { changeStateRouting } from '../../redux/reducers/reducerStateBooking';
 import { changeTicket } from '../../Actions';
@@ -17,7 +18,11 @@ const SettingData = ({ dataTicket, changeTicket, changeStateRouting }) => {
             type="datetime-local"
             value={dataTicket.dateFrom}
             onChange={(e) => {
-              changeTicket({ dateFrom: e.target.value, dateTo: '', price: 0 });
+              changeTicket({
+                dateFrom: e.target.value,
+                dateTo: '',
+                price: 0,
+              });
               changeStateRouting(CHANGE_STATE_ROUTING_2);
             }}
           />
@@ -30,7 +35,16 @@ const SettingData = ({ dataTicket, changeTicket, changeStateRouting }) => {
             type="datetime-local"
             value={dataTicket.dateTo}
             onChange={(e) => {
-              changeTicket({ dateTo: e.target.value, price: 0 });
+              changeTicket({
+                dateTo: e.target.value,
+                price:
+                  dataTicket.dateFrom && e.target.value && dataTicket.tariff
+                    ? Math.ceil(
+                        (new Date(e.target.value).getTime() - new Date(dataTicket.dateFrom).getTime()) /
+                          TariffTime[dataTicket.tariff.rateTypeId.unit]
+                      ) * dataTicket.tariff.price
+                    : 0,
+              });
               changeStateRouting(CHANGE_STATE_ROUTING_2);
             }}
           />

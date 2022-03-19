@@ -4,7 +4,6 @@ import { changeStateRouting, changeStatePage } from '../../../redux/reducers/red
 import { changeTicket, fetchPoints, resetPoints } from '../../../Actions';
 import { CHANGE_STATE_ROUTING_0, CHANGE_STATE_PAGES_0 } from '../../../redux/action';
 import Map from '../../../assets/img/Booking/Map.jpg';
-import { resetTicketDate } from './constants';
 import SearchList from '../../../components/SearchList';
 import './styles.scss';
 
@@ -20,14 +19,14 @@ const SelectLocation = ({
 }) => {
   const [focusCityActive, setFocusCityActive] = useState('');
   const [focusPointActive, setFocusPointActive] = useState('');
-  const [valueCityInput, setValueCityInput] = useState(dataTicket.deliveryPoint.address || '');
-  const [valuePointInput, setValuePointInput] = useState(dataTicket.city.name || '');
+  const [valueCityInput, setValueCityInput] = useState(dataTicket.city.name || '');
+  const [valuePointInput, setValuePointInput] = useState(dataTicket.deliveryPoint.address || '');
 
   const focusDisActive = useCallback((e) => {
-    if (e.target.className !== 'selectLocation-city__input') {
+    if (e.target.className !== 'selectLocation-city__input active') {
       setFocusCityActive('');
     }
-    if (e.target.className !== 'selectLocation-deliveryPoint__input') {
+    if (e.target.className !== 'selectLocation-deliveryPoint__input active') {
       setFocusPointActive('');
     }
   }, []);
@@ -54,7 +53,7 @@ const SelectLocation = ({
         <div className="selectLocation-city">
           <p>Город</p>
           <input
-            className="selectLocation-city__input"
+            className={`selectLocation-city__input ${focusCityActive && 'active'}`}
             value={valueCityInput}
             placeholder="Начните вводить город ..."
             onChange={(e) => {
@@ -73,7 +72,6 @@ const SelectLocation = ({
               changeTicket({
                 city: { ...e },
                 deliveryPoint: '',
-                ...resetTicketDate,
               });
               fetchPoints(e.id);
               changeStateRouting(CHANGE_STATE_ROUTING_0);
@@ -82,7 +80,7 @@ const SelectLocation = ({
           <button
             className={`selectLocation-button ${valueCityInput && 'active'}`}
             onClick={() => {
-              changeTicket({ city: '', deliveryPoint: '', ...resetTicketDate });
+              changeTicket({ city: '', deliveryPoint: '' });
               changeStateRouting(CHANGE_STATE_ROUTING_0);
               resetPoints();
               setValueCityInput('');
@@ -93,7 +91,7 @@ const SelectLocation = ({
         <div className="selectLocation-deliveryPoint">
           <p>Пункт выдачи</p>
           <input
-            className="selectLocation-deliveryPoint__input"
+            className={`selectLocation-deliveryPoint__input ${focusPointActive && 'active'}`}
             value={valuePointInput}
             placeholder="Начните вводить пункт ..."
             onChange={(e) => {
@@ -112,7 +110,6 @@ const SelectLocation = ({
               onClick={(e) => {
                 changeTicket({
                   deliveryPoint: { ...e },
-                  ...resetTicketDate,
                 });
                 changeStateRouting(CHANGE_STATE_ROUTING_0);
               }}
@@ -121,7 +118,7 @@ const SelectLocation = ({
           <button
             className={`selectLocation-button ${valuePointInput && 'active'}`}
             onClick={() => {
-              changeTicket({ deliveryPoint: '', ...resetTicketDate });
+              changeTicket({ deliveryPoint: '' });
               changeStateRouting(CHANGE_STATE_ROUTING_0);
               setValuePointInput('');
             }}

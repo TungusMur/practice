@@ -4,15 +4,15 @@ const defaultState = {
   city: '',
   deliveryPoint: '',
   car: '',
-  color: '',
+  color: 'Любой',
   dateFrom: '',
   dateTo: '',
   tariff: '',
   fullTank: false,
   rightHand: false,
   childSeat: false,
-  priceMin: 8000,
-  priceMax: 12000,
+  priceMin: 0,
+  priceMax: 0,
   price: 0,
 };
 

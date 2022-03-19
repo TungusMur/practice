@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { changeStatePage, changeStateRouting } from '../../redux/reducers/reducerStateBooking';
+import { changeStateRouting } from '../../redux/reducers/reducerStateBooking';
 import { changeTicket } from '../../Actions';
-import { CHANGE_STATE_PAGES_1, CHANGE_STATE_ROUTING_1 } from '../../redux/action';
+import { CHANGE_STATE_ROUTING_1 } from '../../redux/action';
 import { connect } from 'react-redux';
 import './styles.scss';
 
-const CarItem = ({ data, dataTicket, changeTicket, changeStatePage, changeStateRouting }) => {
+const CarItem = ({ data, dataTicket, changeTicket, changeStateRouting }) => {
   const [noneImage, setNoneImage] = useState(false);
 
   return (
-    <div className={`сarsItems__item ${data.id === dataTicket.car.id ? 'active' : ''}`} key={data.id}>
+    <div className={`сarsItems__item ${data.id === dataTicket.car.id && 'active'}`} key={data.id}>
       <button
         className="сarsItems__button"
         onClick={() => {
@@ -17,14 +17,6 @@ const CarItem = ({ data, dataTicket, changeTicket, changeStatePage, changeStateR
             car: { ...data },
             priceMax: data.priceMax,
             priceMin: data.priceMin,
-            price: 0,
-            color: '',
-            dateFrom: '',
-            dateTo: '',
-            tariff: '',
-            fullTank: false,
-            rightHand: false,
-            childSeat: false,
           });
           changeStateRouting(CHANGE_STATE_ROUTING_1);
         }}
@@ -65,6 +57,5 @@ const CarItem = ({ data, dataTicket, changeTicket, changeStatePage, changeStateR
 
 export default connect((data) => ({ dataTicket: data.reducerTicketData }), {
   changeTicket,
-  changeStatePage,
   changeStateRouting,
 })(CarItem);

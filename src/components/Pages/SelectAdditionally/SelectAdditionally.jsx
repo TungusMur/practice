@@ -11,15 +11,9 @@ import { changeTicket } from '../../../Actions';
 import { CHANGE_STATE_PAGES_2, CHANGE_STATE_PAGES_1 } from '../../../redux/action';
 import './styles.scss';
 
-const SelectAdditionally = ({ dataTicket, dataRates, changeTicket, changeStatePage }) => {
+const SelectAdditionally = ({ dataTicket, changeTicket, changeStatePage }) => {
   const navigation = useNavigate();
   const params = useParams();
-
-  useEffect(() => {
-    if (dataRates.loading && !(dataTicket.color && dataTicket.tariff)) {
-      changeTicket({ color: 'Любой', tariff: dataRates.data[0] });
-    }
-  }, [dataRates]);
 
   useEffect(() => {
     if (!(dataTicket.city && dataTicket.deliveryPoint)) {
@@ -42,18 +36,6 @@ const SelectAdditionally = ({ dataTicket, dataRates, changeTicket, changeStatePa
     }
   }, [dataTicket.color, dataTicket.dateFrom, dataTicket.dateTo, dataTicket.tariff, dataTicket.price]);
 
-  useEffect(() => {
-    if (dataTicket.dateFrom && dataTicket.dateTo) {
-      changeTicket({
-        price:
-          Math.ceil(
-            (new Date(dataTicket.dateTo).getTime() - new Date(dataTicket.dateFrom).getTime()) /
-              TariffTime[dataTicket.tariff.rateTypeId.unit]
-          ) * dataTicket.tariff.price,
-      });
-    }
-  }, [dataTicket.dateFrom, dataTicket.dateTo, dataTicket.tariff]);
-
   return (
     dataTicket.city &&
     dataTicket.deliveryPoint && (
@@ -67,7 +49,7 @@ const SelectAdditionally = ({ dataTicket, dataRates, changeTicket, changeStatePa
   );
 };
 
-export default connect((data) => ({ dataTicket: data.reducerTicketData, dataRates: data.reducerRatesData }), {
+export default connect((data) => ({ dataTicket: data.reducerTicketData }), {
   changeTicket,
   changeStatePage,
 })(SelectAdditionally);
