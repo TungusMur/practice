@@ -13,6 +13,7 @@ import {
 const defaultState = {
   stateRouting: [true, false, false, false],
   statePage: [false, false, false, false],
+  verification: false,
 };
 
 export default (state = defaultState, { type }) => {

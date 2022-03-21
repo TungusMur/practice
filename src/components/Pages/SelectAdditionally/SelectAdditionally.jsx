@@ -27,8 +27,16 @@ const SelectAdditionally = ({ dataTicket, changeTicket, changeStatePage }) => {
       dataTicket.dateFrom &&
       dataTicket.dateTo &&
       dataTicket.tariff &&
-      dataTicket.price <= dataTicket.priceMax &&
-      dataTicket.price >= dataTicket.priceMin
+      dataTicket.price +
+        (dataTicket.fullTank && 500) +
+        (dataTicket.childSeat && 200) +
+        (dataTicket.rightHand && 1600) <=
+        dataTicket.priceMax &&
+      dataTicket.price +
+        (dataTicket.fullTank && 500) +
+        (dataTicket.childSeat && 200) +
+        (dataTicket.rightHand && 1600) >=
+        dataTicket.priceMin
     ) {
       changeStatePage(CHANGE_STATE_PAGES_2);
     } else {
