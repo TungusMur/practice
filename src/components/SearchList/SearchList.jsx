@@ -15,18 +15,16 @@ const SearchList = ({ status, data, valueInput, setValueInput, onClick }) => {
   return (
     <div className={`searchList ${status}`}>
       {data.loading ? (
-        filterData.length ? (
-          filterData.map((item) => (
-            <SearchItem data={item} key={item.id} onClick={onClick} setValueInput={setValueInput} />
-          ))
-        ) : (
-          <div className="searchList-info">
-            <p>нет данных</p>
-          </div>
-        )
-      ) : (
         <div className="searchList-info">
           <p>загрузка...</p>
+        </div>
+      ) : filterData.length ? (
+        filterData.map((item) => (
+          <SearchItem data={item} key={item.id} onClick={onClick} setValueInput={setValueInput} />
+        ))
+      ) : (
+        <div className="searchList-info">
+          <p>нет данных</p>
         </div>
       )}
     </div>

@@ -5,12 +5,12 @@ const defaultState = { data: [], loading: false };
 export default (state = defaultState, { type, payload }) => {
   switch (type) {
     case LOADING_CARS_DATA:
-      return { ...state, loading: false };
+      return { ...state, loading: true };
     case GET_CARS_DATA:
       return {
         ...state,
         data: [...payload],
-        loading: true,
+        loading: false,
       };
     default:
       return { ...state };
