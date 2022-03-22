@@ -42,7 +42,16 @@ const SelectAdditionally = ({ dataTicket, changeTicket, changeStatePage }) => {
     } else {
       changeStatePage(CHANGE_STATE_PAGES_1);
     }
-  }, [dataTicket.color, dataTicket.dateFrom, dataTicket.dateTo, dataTicket.tariff, dataTicket.price]);
+  }, [
+    dataTicket.color,
+    dataTicket.dateFrom,
+    dataTicket.dateTo,
+    dataTicket.tariff,
+    dataTicket.price,
+    dataTicket.fullTank,
+    dataTicket.childSeat,
+    dataTicket.rightHand,
+  ]);
 
   return (
     dataTicket.city &&

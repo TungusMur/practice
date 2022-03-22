@@ -40,6 +40,7 @@ const Ticket = ({
                 <p>{dataTicket.deliveryPoint.address}</p>
               </div>
             </div>
+            <div className="ticket-dottedLine"></div>
           </div>
         )}
         {dataTicket.car && stateRouting[1] && (
@@ -48,6 +49,7 @@ const Ticket = ({
             <div className="ticket-car__content">
               <p>{dataTicket.car.name}</p>
             </div>
+            <div className="ticket-dottedLine"></div>
           </div>
         )}
         {dataTicket.color && stateRouting[2] && (
@@ -56,6 +58,7 @@ const Ticket = ({
             <div className="ticket-color__content">
               <p>{dataTicket.color}</p>
             </div>
+            <div className="ticket-dottedLine"></div>
           </div>
         )}
         {dataTicket.dateFrom && dataTicket.dateTo && stateRouting[2] && (
@@ -81,6 +84,7 @@ const Ticket = ({
                 </>
               )}
             </div>
+            <div className="ticket-dottedLine"></div>
           </div>
         )}
         {dataTicket.tariff && stateRouting[2] && (
@@ -89,6 +93,7 @@ const Ticket = ({
             <div className="ticket-tariff__content">
               <p>{dataTicket.tariff.rateTypeId.name}</p>
             </div>
+            <div className="ticket-dottedLine"></div>
           </div>
         )}
         {dataTicket.fullTank && stateRouting[2] && (
@@ -97,6 +102,7 @@ const Ticket = ({
             <div className="ticket-fullTank__content">
               <p>Да</p>
             </div>
+            <div className="ticket-dottedLine"></div>
           </div>
         )}
         {dataTicket.childSeat && stateRouting[2] && (
@@ -105,6 +111,7 @@ const Ticket = ({
             <div className="ticket-childSeat__content">
               <p>Да</p>
             </div>
+            <div className="ticket-dottedLine"></div>
           </div>
         )}
         {dataTicket.rightHand && stateRouting[2] && (
@@ -113,6 +120,7 @@ const Ticket = ({
             <div className="ticket-rightHand__content">
               <p>Да</p>
             </div>
+            <div className="ticket-dottedLine"></div>
           </div>
         )}
         {(Boolean(dataTicket.price) || (Boolean(dataTicket.priceMin) && Boolean(dataTicket.priceMax))) &&

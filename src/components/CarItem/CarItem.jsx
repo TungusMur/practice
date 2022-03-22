@@ -15,6 +15,7 @@ const CarItem = ({ data, dataTicket, changeTicket, changeStateRouting }) => {
         onClick={() => {
           changeTicket({
             car: { ...data },
+            color: 'Любой',
             priceMax: data.priceMax,
             priceMin: data.priceMin,
           });

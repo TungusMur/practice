@@ -45,14 +45,14 @@ const SelectResult = ({ dataTicket, changeStatePage }) => {
             <div className="selectResult-number">
               <p>{dataTicket.car.number.replace(/(\d+)/g, ' $1 ').toUpperCase()}</p>
             </div>
-            {dataTicket.fullTank && (
-              <div className="selectResult-fullTank">
-                <div className="selectResult-description">
-                  <p>Топливо</p>
-                </div>
-                <p>100%</p>
+
+            <div className="selectResult-fullTank">
+              <div className="selectResult-description">
+                <p>Топливо</p>
               </div>
-            )}
+              {dataTicket.fullTank ? <p>100%</p> : <p>{dataTicket.car.tank}%</p>}
+            </div>
+
             {dataTicket.rightHand && (
               <div className="selectResult-rightHand">
                 <div className="selectResult-description">
