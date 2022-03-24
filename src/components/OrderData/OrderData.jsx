@@ -12,7 +12,11 @@ const OrderData = ({ dataOrder, verificationState }) => {
 
   return (
     <>
-      {dataOrder.loading ? null : dataOrder.data ? (
+      {dataOrder.loading ? (
+        <div className="orderData-info">
+          <h2>Загрузка...</h2>
+        </div>
+      ) : dataOrder.status === 200 ? (
         <>
           <div className="orderData">
             <div className="orderData-img">
@@ -74,7 +78,11 @@ const OrderData = ({ dataOrder, verificationState }) => {
           </div>
           {verificationState && <VerificationOrderCancel />}
         </>
-      ) : null}
+      ) : (
+        <div className="orderData-info">
+          <h2>Данной страницы нет</h2>
+        </div>
+      )}
     </>
   );
 };

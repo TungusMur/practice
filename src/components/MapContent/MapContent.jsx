@@ -10,35 +10,11 @@ const MapContent = ({ dataTicket, dataPoints, changeTicket }) => {
   const [ymaps, setYmaps] = useState(null);
 
   useEffect(() => {
-    if (ymaps) {
-      dataPoints.data.forEach((item) => {
-        const point = new ymaps.geocode(`${dataTicket.city.name}, ${item.address}`);
-
-        point.then((res) => {
-          const placemark = new ymaps.Placemark(res.geoObjects.get(0).geometry.getCoordinates(), null, {
-            iconLayout: 'default#image',
-            iconImageHref: Point,
-            iconImageSize: [18, 18],
-          });
-
-          placemark.events.add('click', () => {
-            changeTicket({
-              deliveryPoint: { ...item },
-            });
-          });
-
-          map.current.geoObjects.add(placemark);
-        });
-      });
-    }
-  }, [ymaps]);
-
-  useEffect(() => {
     if (dataTicket.city && dataTicket.deliveryPoint && ymaps) {
       const point = new ymaps.geocode(`${dataTicket.city.name}, ${dataTicket.deliveryPoint.address}`);
 
       point.then((res) => {
-        map.current.setCenter(res.geoObjects.get(0).geometry.getCoordinates(), 15);
+        map.current.setCenter(res.geoObjects.get(0).geometry.getCoordinates(), 13);
       });
     } else if (dataTicket.city && !dataTicket.deliveryPoint && ymaps) {
       const city = new ymaps.geocode(dataTicket.city.name);
@@ -59,7 +35,29 @@ const MapContent = ({ dataTicket, dataPoints, changeTicket }) => {
       >
         <Map
           instanceRef={map}
-          onLoad={setYmaps}
+          onLoad={(e) => {
+            dataPoints.data.forEach((item) => {
+              const point = new e.geocode(`${dataTicket.city.name}, ${item.address}`);
+
+              point.then((res) => {
+                const placemark = new e.Placemark(res.geoObjects.get(0).geometry.getCoordinates(), null, {
+                  iconLayout: 'default#image',
+                  iconImageHref: Point,
+                  iconImageSize: [18, 18],
+                });
+
+                placemark.events.add('click', () => {
+                  changeTicket({
+                    deliveryPoint: { ...item },
+                  });
+                });
+
+                map.current.geoObjects.add(placemark);
+              });
+            });
+
+            setYmaps(e);
+          }}
           defaultState={{ center: [0, 0], zoom: 8 }}
           width={`100%`}
           height={`100%`}

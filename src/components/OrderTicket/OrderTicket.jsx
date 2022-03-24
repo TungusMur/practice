@@ -13,7 +13,7 @@ const OrderTicket = ({ dataOrder, changeVerificationState }) => {
 
   return (
     <>
-      {dataOrder.loading ? null : dataOrder.data ? (
+      {dataOrder.loading ? null : dataOrder.status === 200 ? (
         <div className="orderTicket">
           <div className="orderTicket-form">
             <div className="orderTicket-description">

@@ -6,7 +6,7 @@ const OrderHeader = ({ dataOrder }) => {
   return (
     <div className="orderHeader">
       <div className="orderHeader-form">
-        {dataOrder.loading ? <p>загрузка...</p> : dataOrder.data ? <p>Заказ номер {dataOrder.data.id}</p> : null}
+        {dataOrder.loading ? null : dataOrder.status === 200 ? <p>Заказ номер {dataOrder.data.id}</p> : null}
       </div>
     </div>
   );

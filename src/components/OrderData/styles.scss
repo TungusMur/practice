@@ -90,3 +90,16 @@
 .orderData-dateFrom {
   display: flex;
 }
+
+.orderData-info {
+  align-items: center;
+  display: flex;
+  height: 57%;
+  justify-content: center;
+  position: absolute;
+  width: inherit;
+
+  & h2 {
+    text-align: center;
+  }
+}

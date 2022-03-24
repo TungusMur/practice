@@ -1,6 +1,6 @@
-import { GET_ORDER_DATA, LOADING_ORDER_DATA, CANCEL_ORDER } from '../../redux/action';
+import { GET_ORDER_DATA, LOADING_ORDER_DATA, CANCEL_ORDER, ERROR_ORDER_DATA } from '../../redux/action';
 
-const defaultState = { data: '', loading: false };
+const defaultState = { data: '', loading: false, status: '404' };
 
 export default (state = defaultState, { type, payload }) => {
   switch (type) {
@@ -8,15 +8,19 @@ export default (state = defaultState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        data: { ...payload },
+        data: { ...payload.data },
+        status: payload.status,
       };
     case CANCEL_ORDER:
       return { ...state, loading: false, data: { ...payload } };
+    case ERROR_ORDER_DATA:
+      return { ...state, loading: false, status: payload.status };
     case LOADING_ORDER_DATA:
       return {
         ...state,
         loading: true,
         data: '',
+        status: 404,
       };
     default:
       return {

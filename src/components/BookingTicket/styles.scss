@@ -96,6 +96,12 @@
   align-self: end;
 }
 
+.bookingTicket-deliveryPoint {
+  & p {
+    text-align: end;
+  }
+}
+
 .bookingTicket__button {
   border-radius: 8px;
   color: #ffffff;
