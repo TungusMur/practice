@@ -4,13 +4,14 @@ import { CHANGE_STATE_ROUTING_2 } from '../../redux/action';
 import { changeStateRouting } from '../../redux/reducers/reducerStateBooking';
 import { changeTicket } from '../../Actions';
 import { connect } from 'react-redux';
+import './styles.scss';
 
 const SettingServices = ({ dataTicket, changeTicket, changeStateRouting }) => {
   return (
-    <div className="selectAdditionally-services">
+    <div className="settingServices">
       <p>Доп услуги</p>
-      <div className="selectAdditionally-services__content">
-        <label className={`selectAdditionally-services__item ${dataTicket.fullTank && 'active'}`}>
+      <div className="settingServices__content">
+        <label className={`settingServices__item ${dataTicket.fullTank && 'active'}`}>
           <input
             id="filterServices"
             type="checkbox"
@@ -25,7 +26,7 @@ const SettingServices = ({ dataTicket, changeTicket, changeStateRouting }) => {
           <img alt="check" src={check} />
           <p>Полный бак, 500р</p>
         </label>
-        <label className={`selectAdditionally-services__item ${dataTicket.childSeat && 'active'}`}>
+        <label className={`settingServices__item ${dataTicket.childSeat && 'active'}`}>
           <input
             id="filterServices"
             type="checkbox"
@@ -40,7 +41,7 @@ const SettingServices = ({ dataTicket, changeTicket, changeStateRouting }) => {
           <img alt="check" src={check} />
           <p>Детское кресло, 200р</p>
         </label>
-        <label className={`selectAdditionally-services__item ${dataTicket.rightHand && 'active'}`}>
+        <label className={`settingServices__item ${dataTicket.rightHand && 'active'}`}>
           <input
             id="filterServices"
             type="checkbox"

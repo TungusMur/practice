@@ -6,7 +6,8 @@ import SelectLocation from '../Pages/SelectLocation';
 import SelectModel from '../Pages/SelectModel';
 import SelectAdditionally from '../Pages/SelectAdditionally';
 import SelectResult from '../Pages/SelectResult';
-import NotFound from '../NotFound';
+import Order from '../Pages/Order/Order';
+import NotFound from '../Pages/NotFound';
 import './styles.scss';
 import { connect } from 'react-redux';
 import { fetchCars, fetchCities, fetchCategories, fetchRates } from '../../Actions';
@@ -39,6 +40,7 @@ const Main = ({ fetchCars, fetchCities, fetchCategories, fetchRates }) => {
           <Route path="additionally" element={<SelectAdditionally />} />
           <Route path="result" element={<SelectResult />} />
         </Route>
+        <Route path="order/id=:id" element={<Order />}></Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </main>

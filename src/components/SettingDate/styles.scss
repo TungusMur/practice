@@ -1,0 +1,27 @@
+.settingData {
+  margin-top: 34px;
+}
+
+.settingData__content {
+  margin-top: 18px;
+}
+
+.settingData-dateFrom,
+.settingData-dateTo {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+  width: 250px;
+}
+
+#filterDate {
+  border: 0px;
+  border-bottom: 1px solid #999999;
+  margin-left: 8px;
+  padding-left: 8px;
+  width: 216px;
+
+  &:focus {
+    outline: 0px;
+  }
+}

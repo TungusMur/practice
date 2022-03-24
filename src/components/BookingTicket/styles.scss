@@ -1,0 +1,145 @@
+.bookingTicket {
+  align-items: flex-end;
+  border-left: 1px solid #eeeeee;
+  display: flex;
+  flex-direction: column;
+  width: 319px;
+
+  @media screen and (max-width: 1439px) {
+    // width: 279px;
+    width: 284px;
+  }
+  @media screen and (max-width: 1023px) {
+    border-left: 0;
+    width: 100%;
+  }
+}
+
+.bookingTicket-form {
+  align-content: space-between;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+  width: 100%;
+}
+
+.bookingTicket-description {
+  align-self: end;
+  margin-bottom: 18px;
+}
+
+.bookingTicket-dottedLine {
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background: radial-gradient(circle, #999999 27%, transparent 25%) top left/5px 4px repeat-x;
+  z-index: -1;
+}
+
+.bookingTicket-address,
+.bookingTicket-car,
+.bookingTicket-color,
+.bookingTicket-date,
+.bookingTicket-tariff,
+.bookingTicket-fullTank,
+.bookingTicket-childSeat,
+.bookingTicket-rightHand {
+  align-items: flex-end;
+  align-self: end;
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0px;
+  position: relative;
+  width: 289px;
+
+  & > p {
+    background: #ffffff;
+    color: #121212;
+    padding-right: 5px;
+  }
+
+  @media screen and (max-width: 1439px) {
+    width: 273px;
+  }
+  @media screen and (max-width: 1023px) {
+    width: 100%;
+  }
+}
+
+.bookingTicket-address__content,
+.bookingTicket-car__content,
+.bookingTicket-color__content,
+.bookingTicket-date__content,
+.bookingTicket-tariff__content,
+.bookingTicket-fullTank__content,
+.bookingTicket-childSeat__content,
+.bookingTicket-rightHand__content {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding-left: 8px;
+  p {
+    color: #999999;
+  }
+}
+
+.bookingTicket-date__content {
+  flex-direction: row;
+}
+
+.bookingTicket-date__info {
+  margin-left: 3.5px;
+}
+
+.bookingTicket-city {
+  align-self: end;
+}
+
+.bookingTicket__button {
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: 'Roboto-Normal';
+  font-size: 18px;
+  height: 48px;
+  margin-top: 32px;
+  width: 287px;
+
+  @media screen and (max-width: 1439px) {
+    width: 273px;
+  }
+  @media screen and (max-width: 1023px) {
+    margin-bottom: 40px;
+    width: 100%;
+  }
+}
+
+.bookingTicket-price {
+  align-self: end;
+  margin-top: 24px;
+  width: 289px;
+
+  @media screen and (max-width: 1439px) {
+    width: 257px;
+  }
+  @media screen and (max-width: 1023px) {
+    width: 100%;
+  }
+}
+
+.bookingTicket-price__content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.bookingTicket-price__info {
+  font-weight: normal;
+  margin-left: 5px;
+}
+
+.bookingTicket-price__error {
+  line-height: 16px;
+  margin-top: 24px;
+  text-align: center;
+}

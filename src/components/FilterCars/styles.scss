@@ -1,0 +1,72 @@
+.filterCars {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 32px;
+
+  @media screen and (max-width: 1439px) {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 95%;
+  }
+}
+
+.filterCars__item {
+  align-items: center;
+  display: flex;
+  margin-right: 16px;
+
+  & p {
+    color: #999999;
+  }
+
+  &.active {
+    & p {
+      color: #121212;
+    }
+  }
+
+  @media screen and (max-width: 1439px) {
+    margin-bottom: 10px;
+    width: 145px;
+    // margin-right: 52px;
+  }
+
+  @media screen and (max-width: 767px) {
+    // margin-right: 58px;
+    width: 120px;
+  }
+}
+
+#filterCar {
+  align-items: center;
+  appearance: none;
+  display: flex;
+  height: 12px;
+  justify-content: center;
+  margin: 0;
+  margin-right: 8px;
+  outline: none;
+  position: relative;
+  width: 12px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+#filterCar:checked::after {
+  background: none;
+  border-radius: 10px;
+  border: 3.5px solid #0ec261;
+  content: '';
+  height: 5px;
+  position: absolute;
+  width: 5px;
+}
+
+#filterCar::before {
+  background: none;
+  border-radius: 10px;
+  border: 1px solid #999999;
+  content: '';
+  height: 10px;
+  position: absolute;
+  width: 10px;
+}

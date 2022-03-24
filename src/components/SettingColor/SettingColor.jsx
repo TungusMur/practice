@@ -7,10 +7,10 @@ import './styles.scss';
 
 const SettingColor = ({ dataTicket, changeTicket, changeStateRouting }) => {
   return (
-    <div className="selectAdditionally-color">
+    <div className="settingColor">
       <p>Цвет</p>
-      <div className="selectAdditionally-color__content">
-        <label className={`selectAdditionally-color__item ${dataTicket.color === 'Любой' ? 'active' : ''}`}>
+      <div className="settingColor__content">
+        <label className={`settingColor__item ${dataTicket.color === 'Любой' ? 'active' : ''}`}>
           <input
             id="filterColor"
             type="radio"
@@ -27,7 +27,7 @@ const SettingColor = ({ dataTicket, changeTicket, changeStateRouting }) => {
         {dataTicket.car.colors &&
           [...dataTicket.car.colors].map((item, index) => (
             <label
-              className={`selectAdditionally-color__item ${dataTicket.color === item ? 'active' : ''}`}
+              className={`settingColor__item ${dataTicket.color === item ? 'active' : ''}`}
               key={index + item}
             >
               <input

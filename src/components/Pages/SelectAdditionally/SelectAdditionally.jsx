@@ -4,14 +4,12 @@ import SettingColor from '../../../components/SettingColor';
 import SettingDate from '../../../components/SettingDate';
 import SettingTariff from '../../../components/SettingTariff';
 import SettingServices from '../../../components/SettingServices';
-import { TariffTime } from './constants';
 import { connect } from 'react-redux';
 import { changeStatePage } from '../../../redux/reducers/reducerStateBooking';
-import { changeTicket } from '../../../Actions';
 import { CHANGE_STATE_PAGES_2, CHANGE_STATE_PAGES_1 } from '../../../redux/action';
 import './styles.scss';
 
-const SelectAdditionally = ({ dataTicket, changeTicket, changeStatePage }) => {
+const SelectAdditionally = ({ dataTicket, changeStatePage }) => {
   const navigation = useNavigate();
   const params = useParams();
 
@@ -56,7 +54,7 @@ const SelectAdditionally = ({ dataTicket, changeTicket, changeStatePage }) => {
   return (
     dataTicket.city &&
     dataTicket.deliveryPoint && (
-      <div className="selectAdditionally-additionally">
+      <div className="selectAdditionally">
         <SettingColor />
         <SettingDate />
         <SettingTariff />
@@ -67,6 +65,5 @@ const SelectAdditionally = ({ dataTicket, changeTicket, changeStatePage }) => {
 };
 
 export default connect((data) => ({ dataTicket: data.reducerTicketData }), {
-  changeTicket,
   changeStatePage,
 })(SelectAdditionally);

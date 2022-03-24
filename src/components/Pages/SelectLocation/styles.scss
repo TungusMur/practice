@@ -84,12 +84,10 @@
   }
 }
 
-.selectLocation-map__content {
+.selectLocation-mapInfo {
+  height: 352px;
   margin-top: 16px;
-
-  & img {
-    width: 100%;
-  }
+  width: 100%;
 
   @media screen and (max-width: 1439px) {
     width: 97%;

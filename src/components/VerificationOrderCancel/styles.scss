@@ -1,0 +1,70 @@
+.verificationOrderCancel {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  z-index: 1;
+}
+
+.verificationOrderCancel-form {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
+.verificationOrderCancel-content {
+  display: flex;
+  height: 157px;
+  width: 405px;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (max-width: 767px) {
+    width: 320px;
+  }
+}
+
+.verificationOrderCancel-discription {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+
+  & h6 {
+    font-family: 'Roboto-Normal';
+  }
+}
+
+.verificationOrderCancel-action {
+  display: flex;
+  justify-content: space-between;
+  width: 378px;
+
+  @media screen and (max-width: 767px) {
+    width: 94%;
+  }
+}
+
+.verificationOrderCancel__button {
+  width: 177px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: #ffffff;
+
+  & h5 {
+    font-weight: 500;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 134px;
+    height: 41px;
+  }
+}
