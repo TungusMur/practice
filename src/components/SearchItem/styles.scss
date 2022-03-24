@@ -1,0 +1,25 @@
+.searchItem {
+  width: 100%;
+
+  &:last-child {
+    margin-bottom: 6px;
+  }
+}
+
+.searchItem__button {
+  background: #ffffff;
+  display: flex;
+  width: 99%;
+
+  & p {
+    margin-left: 8px;
+    margin-top: 6px;
+    color: #999999;
+  }
+
+  &:hover {
+    & p {
+      color: #0ec261;
+    }
+  }
+}

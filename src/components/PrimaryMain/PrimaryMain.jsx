@@ -31,6 +31,7 @@ const PrimaryMain = () => {
             className="primaryMain-booking__button button-classic"
             onClick={() => {
               navigation(`/${params.lang}/reserve/location`);
+              window.scrollTo(0, 0);
             }}
           >
             {params.lang === 'en' ? 'Reserve' : 'Забронировать'}
