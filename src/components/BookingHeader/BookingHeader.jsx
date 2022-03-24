@@ -9,7 +9,7 @@ const BookingHeader = ({ bookingPageActive, setBookingPageActive, bookingNavigat
   const params = useParams();
 
   return (
-    <div className="bookingHeader">
+    <div id="bookingHeader" className="bookingHeader">
       <div className="bookingHeader-form">
         <div className="bookingHeader-navigation">
           {bookingNavigationItems.map((item, index) => (

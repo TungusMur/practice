@@ -1,0 +1,76 @@
+.selectResult {
+  display: flex;
+  height: 118px;
+  margin-top: 32px;
+  position: relative;
+  width: 59.7%;
+
+  @media screen and (max-width: 1439px) {
+    width: 65%;
+  }
+  @media screen and (max-width: 1023px) {
+    width: 100%;
+  }
+  @media screen and (max-width: 767px) {
+    height: 100%;
+    flex-direction: column;
+  }
+}
+
+.selectResult-content {
+  width: 100%;
+
+  & > div {
+    margin-bottom: 8px;
+  }
+}
+
+.selectResult-img {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  right: 0px;
+  width: 256px;
+  & img {
+    width: 100%;
+  }
+  @media screen and (max-width: 767px) {
+    position: static;
+    width: 100%;
+  }
+}
+
+.selectResult-name {
+  & h5 {
+    font-weight: normal;
+  }
+}
+.selectResult-number {
+  border: 1px solid #999999;
+  border-radius: 4px;
+  display: flex;
+  height: 22px;
+  justify-content: center;
+  min-width: 92px;
+  width: max-content;
+
+  & p {
+    font-weight: normal;
+    margin: 4px 8px;
+  }
+}
+.selectResult-description {
+  margin-right: 5px;
+  & p {
+    font-weight: 700;
+  }
+}
+
+.selectResult-fullTank,
+.selectResult-rightHand,
+.selectResult-childSeat,
+.selectResult-dateFrom {
+  display: flex;
+}
