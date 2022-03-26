@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import VerificationOrderCancel from '../VerificationOrderCancel';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import './styles.scss';
 
-const OrderData = ({ dataOrder, verificationState }) => {
+const OrderData = ({ dataOrder }) => {
   const [noneImage, setNoneImage] = useState(false);
-
-  useEffect(() => {
-    document.body.style.overflow = verificationState ? 'hidden' : 'auto';
-  }, [verificationState]);
-
   return (
     <>
       {dataOrder.loading ? (
@@ -76,7 +70,6 @@ const OrderData = ({ dataOrder, verificationState }) => {
               </div>
             </div>
           </div>
-          {verificationState && <VerificationOrderCancel />}
         </>
       ) : (
         <div className="orderData-info">
@@ -89,5 +82,4 @@ const OrderData = ({ dataOrder, verificationState }) => {
 
 export default connect((data) => ({
   dataOrder: data.reducerOrderData,
-  verificationState: data.reducerVerificationState.state,
 }))(OrderData);

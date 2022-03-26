@@ -8,17 +8,15 @@ import {
   CHANGE_STATE_PAGES_1,
   CHANGE_STATE_PAGES_2,
   CHANGE_STATE_PAGES_3,
-  POST_ORDER,
   RESET_BOOKING,
 } from '../action';
 
 const defaultState = {
   stateRouting: [true, false, false, false],
   statePage: [false, false, false, false],
-  orderId: '',
 };
 
-export default (state = defaultState, { type, payload }) => {
+export default (state = defaultState, { type }) => {
   switch (type) {
     case CHANGE_STATE_ROUTING_0:
       return {
@@ -64,11 +62,6 @@ export default (state = defaultState, { type, payload }) => {
       return {
         ...state,
         statePage: [true, true, true, true],
-      };
-    case POST_ORDER:
-      return {
-        ...state,
-        orderId: payload,
       };
     case RESET_BOOKING:
       return {

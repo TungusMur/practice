@@ -10,6 +10,7 @@ import postOrder from './postOrderDataAction';
 import resetBooking from './resetBooking';
 import fetchOrder from './getOrderDataAction';
 import cancelOrder from './cancelOrderDataAction';
+import resetOrder from './resetOrderDataAction';
 import changeVerificationState from './changeVerificationState';
 
 export {
@@ -25,5 +26,6 @@ export {
   resetBooking,
   fetchOrder,
   cancelOrder,
+  resetOrder,
   changeVerificationState,
 };

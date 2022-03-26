@@ -1,9 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeVerificationState } from '../../Actions';
+import { useParams, useNavigate } from 'react-router-dom';
+import { cancelOrder } from '../../Actions';
 import './styles.scss';
 
-const OrderTicket = ({ dataOrder, changeVerificationState }) => {
+const OrderTicket = ({ dataOrder, cancelOrder }) => {
+  const params = useParams();
+  const navigation = useNavigate();
   const dateFrom = new Date(dataOrder.data.dateFrom);
   const dateTo = new Date(dataOrder.data.dateTo);
   const daysBooking = Math.floor((dateTo.getTime() - dateFrom.getTime()) / (1000 * 3600 * 24));
@@ -114,7 +117,8 @@ const OrderTicket = ({ dataOrder, changeVerificationState }) => {
             <button
               className={`orderTicket__button button-id2 `}
               onClick={() => {
-                changeVerificationState(true);
+                cancelOrder(dataOrder.data.id);
+                navigation(`/${params.lang}/`);
               }}
             >
               Отменить
@@ -126,4 +130,4 @@ const OrderTicket = ({ dataOrder, changeVerificationState }) => {
   );
 };
 
-export default connect((data) => ({ dataOrder: data.reducerOrderData }), { changeVerificationState })(OrderTicket);
+export default connect((data) => ({ dataOrder: data.reducerOrderData }), { cancelOrder })(OrderTicket);

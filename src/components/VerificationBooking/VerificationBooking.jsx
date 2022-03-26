@@ -8,7 +8,7 @@ import './styles.scss';
 
 const VerificationBooking = ({
   dataTicket,
-  orderId,
+  dataOrder,
   changeVerificationState,
   postOrder,
   resetTicket,
@@ -28,13 +28,14 @@ const VerificationBooking = ({
   }, []);
 
   useEffect(() => {
-    if (orderId) {
-      navigation(`/${params.lang}/order/id=${orderId}`);
+    if (dataOrder.data) {
+      console.log(dataOrder);
+      navigation(`/${params.lang}/order/id=${dataOrder.data.id}`);
       resetTicket();
       resetBooking();
       resetPoints();
     }
-  }, [orderId]);
+  }, [dataOrder.data]);
 
   return (
     <div id="verificationBooking" className="verificationBooking">
@@ -65,7 +66,6 @@ const VerificationBooking = ({
                   isNeedChildChair: dataTicket.childSeat,
                   isRightWheel: dataTicket.rightHand,
                 });
-                changeVerificationState(false);
               }}
             >
               <h5>Подтвердить</h5>
@@ -85,7 +85,7 @@ const VerificationBooking = ({
   );
 };
 
-export default connect((data) => ({ dataTicket: data.reducerTicketData, orderId: data.reducerStateBooking.orderId }), {
+export default connect((data) => ({ dataTicket: data.reducerTicketData, dataOrder: data.reducerOrderData }), {
   changeVerificationState,
   postOrder,
   resetTicket,

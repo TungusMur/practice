@@ -3,17 +3,22 @@ import MainHeader from '../../../common/MainHeader';
 import OrderData from '../../../components/OrderData';
 import OrderTicket from '../../../components/OrderTicket';
 import OrderHeader from '../../OrderHeader';
-import { fetchOrder, changeVerificationState } from '../../../Actions';
+import { fetchOrder, resetOrder } from '../../../Actions';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import './styles.scss';
 
-const Order = ({ fetchOrder, changeVerificationState }) => {
+const Order = ({ dataOrder, fetchOrder, resetOrder }) => {
   const params = useParams();
 
   useEffect(() => {
-    fetchOrder(params.id);
-    changeVerificationState(false);
+    if (!dataOrder.data) {
+      fetchOrder(params.id);
+    }
+
+    return () => {
+      resetOrder();
+    };
   }, []);
 
   return (
@@ -30,4 +35,4 @@ const Order = ({ fetchOrder, changeVerificationState }) => {
   );
 };
 
-export default connect(null, { fetchOrder, changeVerificationState })(Order);
+export default connect((data) => ({ dataOrder: data.reducerOrderData }), { fetchOrder, resetOrder })(Order);
