@@ -15,17 +15,13 @@ const PrimaryMain = () => {
         <MainHeader />
         <div className="primaryMain-booking__content">
           <div className="primaryMain-booking__chapter first">
-            <h1>{params.lang === 'en' ? 'Carsharing' : 'Каршеринг'}</h1>
+            <h1>Каршеринг</h1>
           </div>
           <div className="primaryMain-booking__chapter second">
             <h1>Need for drive</h1>
           </div>
           <div className="primaryMain-booking__description">
-            <h6>
-              {params.lang === 'en'
-                ? 'Minute-by-minute car rental in your city'
-                : 'Поминутная аренда авто твоего города'}
-            </h6>
+            <h6>Поминутная аренда авто твоего города</h6>
           </div>
           <button
             className="primaryMain-booking__button button-classic"
@@ -34,7 +30,7 @@ const PrimaryMain = () => {
               window.scrollTo(0, 0);
             }}
           >
-            {params.lang === 'en' ? 'Reserve' : 'Забронировать'}
+            Забронировать
           </button>
         </div>
         <div className="primaryMain-booking__footer">

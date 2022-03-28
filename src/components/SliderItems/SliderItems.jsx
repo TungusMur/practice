@@ -1,9 +1,7 @@
 import React from 'react';
-import { useParams } from 'react-router';
 import '../../styles/button.scss';
 
 const SliderItems = ({ className, activeIndex, dataList }) => {
-  const params = useParams();
 
   return [-1, 0, 1].map((item) => {
     const index =
@@ -23,12 +21,12 @@ const SliderItems = ({ className, activeIndex, dataList }) => {
         </div>
         <div className={`${className}__item-content`}>
           <div className={`${className}__item-chapter`}>
-            <h2>{dataList[index][`${params.lang}Chapter`]}</h2>
+            <h2>{dataList[index][`ruChapter`]}</h2>
           </div>
           <div className={`${className}__item-description`}>
-            <h6>{dataList[index][`${params.lang}Description`]}</h6>
+            <h6>{dataList[index][`ruDescription`]}</h6>
           </div>
-          <button className={`${className}__item-button button-id${dataList[index].id}`}>{params.lang === 'ru' ? 'Подобронее' : 'More detailed'}</button>
+          <button className={`${className}__item-button button-id${dataList[index].id}`}>Подобронее</button>
         </div>
       </div>
     );

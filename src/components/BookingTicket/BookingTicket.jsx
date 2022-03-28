@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { changeStateRouting } from '../../redux/reducers/reducerStateBooking';
 import { changeVerificationState } from '../../Actions';
@@ -16,7 +16,6 @@ const BookingTicket = ({
   changeVerificationState,
 }) => {
   const navigation = useNavigate();
-  const params = useParams();
 
   const dateFrom = new Date(dataTicket.dateFrom);
   const dateTo = new Date(dataTicket.dateTo);
@@ -179,7 +178,7 @@ const BookingTicket = ({
           }
         }}
       >
-        {bookingNavigationItems[bookingPageActive][`${params.lang}ButtonContent`]}
+        {bookingNavigationItems[bookingPageActive][`ruButtonContent`]}
       </button>
     </div>
   );

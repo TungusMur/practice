@@ -22,7 +22,8 @@ const MainHeader = () => {
         </div>
         <div className="mainHeader__map">
           <img src={iconMap} alt="iconMap" />
-          <p>{params.lang === 'en' ? 'Ulyanovsk' : 'Ульяновск'}</p>
+          {/* <p>{params.lang === 'en' ? 'Ulyanovsk' : 'Ульяновск'}</p> */}
+          <p>Ульяновск</p>
         </div>
       </div>
     </div>

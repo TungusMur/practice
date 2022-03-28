@@ -35,11 +35,7 @@ const Header = () => {
         <button
           className={`header-bar_button-changeLanguage ${statusHeaderClick}`}
           onClick={() => {
-            navigation(
-              `/${params.lang === 'en' ? 'ru' : 'en'}${
-                location.pathname.match(/\/\w+/g)?.length > 1 ? location.pathname.match(/\/\w+/g)[1] : ''
-              }`
-            );
+            navigation(`${location.pathname.replace(/\w+/, params.lang === 'en' ? 'ru' : 'en')}`);
           }}
         >
           {params.lang === 'en' ? 'Rus' : 'Eng'}
@@ -59,7 +55,7 @@ const Header = () => {
                       window.scrollTo(0, 0);
                     }}
                   >
-                    <h3>{item[`${params.lang}Chapter`]}</h3>
+                    <h3>{item[`ruChapter`]}</h3>
                   </NavLink>
                 </div>
               ))}
