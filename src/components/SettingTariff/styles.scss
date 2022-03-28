@@ -1,0 +1,60 @@
+.settingTariff {
+  margin-top: 34px;
+}
+
+.settingTariff__content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 18px;
+}
+
+.settingTariff__item {
+  align-items: center;
+  display: flex;
+  margin-bottom: 10px;
+  margin-right: 16px;
+
+  & p {
+    color: #999999;
+  }
+
+  &.active {
+    & p {
+      color: #121212;
+    }
+  }
+}
+
+#filterTariff {
+  align-items: center;
+  display: flex;
+  height: 12px;
+  justify-content: center;
+  margin: 0;
+  margin-right: 8px;
+  outline: none;
+  position: relative;
+  width: 12px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+#filterTariff:checked::after {
+  background: none;
+  border-radius: 10px;
+  border: 3.5px solid #0ec261;
+  content: '';
+  height: 5px;
+  position: absolute;
+  width: 5px;
+}
+
+#filterTariff::before {
+  background: none;
+  border-radius: 10px;
+  border: 1px solid #999999;
+  content: '';
+  height: 10px;
+  position: absolute;
+  width: 10px;
+}

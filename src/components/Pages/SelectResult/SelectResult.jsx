@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import VerificationBooking from '../../VerificationBooking';
+import { changeVerificationState } from '../../../Actions';
 import { changeStatePage } from '../../../redux/reducers/reducerStateBooking';
 import { CHANGE_STATE_PAGES_3 } from '../../../redux/action';
 import { connect } from 'react-redux';
 import './styles.scss';
 
-const SelectResult = ({ dataTicket, changeStatePage }) => {
+const SelectResult = ({ dataTicket, changeStatePage, verificationState }) => {
   const [noneImage, setNoneImage] = useState(false);
   const navigation = useNavigate();
   const params = useParams();
 
   useEffect(() => {
+    document.body.style.overflow = verificationState ? 'hidden' : 'auto';
+  }, [verificationState]);
+
+  useEffect(() => {
     changeStatePage(CHANGE_STATE_PAGES_3);
+    changeVerificationState(false);
   }, []);
 
   useEffect(() => {
@@ -43,16 +50,18 @@ const SelectResult = ({ dataTicket, changeStatePage }) => {
               <h5>{dataTicket.car.name}</h5>
             </div>
             <div className="selectResult-number">
-              <p>{dataTicket.car.number.replace(/(\d+)/g, ' $1 ').toUpperCase()}</p>
+              {dataTicket.car.number ? (
+                <p>{dataTicket.car.number.replace(/(\d+)/g, ' $1 ').toUpperCase()}</p>
+              ) : (
+                <p>A 000 AA 00</p>
+              )}
             </div>
-
             <div className="selectResult-fullTank">
               <div className="selectResult-description">
                 <p>Топливо</p>
               </div>
               {dataTicket.fullTank ? <p>100%</p> : <p>{dataTicket.car.tank}%</p>}
             </div>
-
             {dataTicket.rightHand && (
               <div className="selectResult-rightHand">
                 <div className="selectResult-description">
@@ -79,10 +88,13 @@ const SelectResult = ({ dataTicket, changeStatePage }) => {
             </div>
           </div>
         </div>
-        {<div className="selectResult-verification"></div>}
+        {verificationState && <VerificationBooking />}
       </>
     )
   );
 };
 
-export default connect((data) => ({ dataTicket: data.reducerTicketData }), { changeStatePage })(SelectResult);
+export default connect(
+  (data) => ({ dataTicket: data.reducerTicketData, verificationState: data.reducerVerificationState.state }),
+  { changeStatePage }
+)(SelectResult);

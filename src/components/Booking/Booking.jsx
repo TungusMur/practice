@@ -3,7 +3,7 @@ import { Outlet, useParams, useNavigate, useLocation } from 'react-router-dom';
 import { bookingNavigationItems } from './constants';
 import BookingHeader from '../../components/BookingHeader';
 import MainHeader from '../../common/MainHeader';
-import Ticket from '../Ticket';
+import BookingTicket from '../BookingTicket';
 import './styles.scss';
 
 const Booking = () => {
@@ -29,7 +29,7 @@ const Booking = () => {
         />
         <div className="booking-content">
           <Outlet />
-          <Ticket
+          <BookingTicket
             bookingPageActive={bookingPageActive}
             setBookingPageActive={setBookingPageActive}
             bookingNavigationItems={bookingNavigationItems}

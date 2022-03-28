@@ -1,0 +1,23 @@
+.map {
+  height: 384px;
+  margin-top: 16px;
+  width: 736px;
+
+  @media screen and (max-width: 1439px) {
+    width: 97%;
+  }
+  @media screen and (max-width: 1023px) {
+    width: auto;
+  }
+}
+
+.map-info {
+  align-items: center;
+  background: repeating-linear-gradient(45deg, #ffffff, #c9dbce 10px, #ffffff 10px, #e5e5e5 20px);
+  border: 1px solid #999999;
+  display: flex;
+  height: 350px;
+  justify-content: center;
+  margin-top: 16px;
+  width: 99%;
+}

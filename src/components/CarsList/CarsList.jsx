@@ -3,9 +3,9 @@ import CarItem from '../../components/CarItem/CarItem';
 import { connect } from 'react-redux';
 import './styles.scss';
 
-const CarsItems = ({ filter, dataCars }) => {
+const CarsList = ({ filter, dataCars }) => {
   return (
-    <div id="carsList" className="сarsItems">
+    <div id="carsList" className="carsList">
       {dataCars.loading ? (
         <div className="carsList-loading">
           <p>Загрузка...</p>
@@ -25,4 +25,4 @@ const CarsItems = ({ filter, dataCars }) => {
   );
 };
 
-export default connect((data) => ({ dataCars: data.reducerCarsData }), {})(CarsItems);
+export default connect((data) => ({ dataCars: data.reducerCarsData }), {})(CarsList);

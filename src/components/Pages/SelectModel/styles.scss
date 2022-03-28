@@ -1,4 +1,8 @@
 .selectModel {
+  display: flex;
+  flex-direction: column;
+  width: 72%;
+
   @media screen and (max-width: 1439px) {
     width: 66%;
   }
@@ -7,73 +11,4 @@
     height: 100%;
     width: auto;
   }
-}
-
-.selectModel-filter {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 32px;
-
-  @media screen and (max-width: 1439px) {
-    flex-wrap: wrap;
-    width: 95%;
-  }
-}
-
-.selectModel-filter__item {
-  align-items: center;
-  display: flex;
-
-  & p {
-    color: #999999;
-  }
-
-  &.active {
-    & p {
-      color: #121212;
-    }
-  }
-
-  @media screen and (max-width: 1439px) {
-    margin-bottom: 10px;
-    margin-right: 52px;
-  }
-
-  @media screen and (max-width: 767px) {
-    margin-right: 58px;
-  }
-}
-
-#filterCar {
-  align-items: center;
-  appearance: none;
-  display: flex;
-  height: 12px;
-  justify-content: center;
-  margin: 0;
-  margin-right: 8px;
-  outline: none;
-  position: relative;
-  width: 12px;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-}
-#filterCar:checked::after {
-  background: none;
-  border-radius: 10px;
-  border: 3.5px solid #0ec261;
-  content: '';
-  height: 5px;
-  position: absolute;
-  width: 5px;
-}
-
-#filterCar::before {
-  background: none;
-  border-radius: 10px;
-  border: 1px solid #999999;
-  content: '';
-  height: 10px;
-  position: absolute;
-  width: 10px;
 }
