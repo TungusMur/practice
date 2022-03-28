@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Vector from '../../assets/img/Booking/Vector.svg';
 import './styles.scss';
 
-const BookingHeader = ({ bookingPageActive, setBookingPageActive, bookingNavigationItems, stateRouting }) => {
+const BookingHeader = ({ bookingPageActive, bookingNavigationItems, stateRouting }) => {
   const navigation = useNavigate();
 
   return (
@@ -19,7 +19,6 @@ const BookingHeader = ({ bookingPageActive, setBookingPageActive, bookingNavigat
                 }`}
                 onClick={() => {
                   if (stateRouting[index]) {
-                    setBookingPageActive(index);
                     navigation(item.link);
                   }
                 }}

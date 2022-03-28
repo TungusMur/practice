@@ -7,7 +7,6 @@ import './styles.scss';
 
 const BookingTicket = ({
   bookingPageActive,
-  setBookingPageActive,
   bookingNavigationItems,
   dataTicket,
   statePage,
@@ -169,7 +168,6 @@ const BookingTicket = ({
         className={`bookingTicket__button button-classic ${statePage[bookingPageActive] || 'notActive'}`}
         onClick={() => {
           if (statePage[bookingPageActive] && bookingPageActive !== 3) {
-            setBookingPageActive((state) => (state += 1));
             navigation(bookingNavigationItems[bookingPageActive + 1].link);
             changeStateRouting(`CHANGE_STATE_ROUTING_${bookingPageActive + 1}`);
             window.scrollTo(0, 0);
