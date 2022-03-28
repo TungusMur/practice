@@ -16,7 +16,7 @@ module.exports = {
     open: true,
     compress: true,
     hot: true,
-    port: 3000,
+    port: 3300,
   },
   plugins: [
     new HTMLWebpackPlugin({ template: path.resolve(__dirname, '../src') + '/index.html', filename: 'index.html' }),

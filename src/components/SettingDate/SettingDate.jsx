@@ -4,13 +4,14 @@ import { CHANGE_STATE_ROUTING_2 } from '../../redux/action';
 import { changeStateRouting } from '../../redux/reducers/reducerStateBooking';
 import { changeTicket } from '../../Actions';
 import { connect } from 'react-redux';
+import './styles.scss';
 
 const SettingData = ({ dataTicket, changeTicket, changeStateRouting }) => {
   return (
-    <div className="selectAdditionally-date">
+    <div className="settingData">
       <p>Дата аренды</p>
-      <div className="selectAdditionally-date__content">
-        <div className="selectAdditionally-dateFrom">
+      <div className="settingData__content">
+        <div className="settingData-dateFrom">
           <p>С</p>
           <input
             id="filterDate"
@@ -27,7 +28,7 @@ const SettingData = ({ dataTicket, changeTicket, changeStateRouting }) => {
             }}
           />
         </div>
-        <div className="selectAdditionally-dateTo">
+        <div className="settingData-dateTo">
           <p>По</p>
           <input
             id="filterDate"

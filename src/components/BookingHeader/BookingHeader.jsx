@@ -1,12 +1,11 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Vector from '../../assets/img/Booking/Vector.svg';
 import './styles.scss';
 
 const BookingHeader = ({ bookingPageActive, setBookingPageActive, bookingNavigationItems, stateRouting }) => {
   const navigation = useNavigate();
-  const params = useParams();
 
   return (
     <div id="bookingHeader" className="bookingHeader">
@@ -25,7 +24,7 @@ const BookingHeader = ({ bookingPageActive, setBookingPageActive, bookingNavigat
                   }
                 }}
               >
-                {item[`${params.lang}Chapter`]}
+                {item[`ruChapter`]}
               </button>
               {bookingNavigationItems.length - 1 !== index && <img alt="вектор" src={Vector} />}
             </div>

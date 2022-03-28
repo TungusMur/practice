@@ -5,6 +5,8 @@ import reducerPointsData from './reducerPointsData';
 import reducerTicketData from './reducerTicketData';
 import reducerCategoriesData from './reducerCategoriesData';
 import reducerRatesData from './reducerRatesData';
+import reducerOrderData from './reducerOrderData';
+import reducerVerificationState from './reducerVerificationState';
 
 export default {
   reducerStateBooking,
@@ -14,4 +16,6 @@ export default {
   reducerPointsData,
   reducerCategoriesData,
   reducerRatesData,
+  reducerOrderData,
+  reducerVerificationState,
 };

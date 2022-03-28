@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { changeStateRouting, changeStatePage } from '../../../redux/reducers/reducerStateBooking';
 import { changeTicket, fetchPoints, resetPoints } from '../../../Actions';
 import { CHANGE_STATE_ROUTING_0, CHANGE_STATE_PAGES_0 } from '../../../redux/action';
-import Map from '../../../assets/img/Booking/Map.jpg';
-import SearchList from '../../../components/SearchList';
+import Map from '../../Map';
+import SearchList from '../../SearchList';
 import './styles.scss';
 
 const SelectLocation = ({
@@ -46,6 +46,12 @@ const SelectLocation = ({
       changeStatePage();
     }
   }, [dataTicket.city, dataTicket.deliveryPoint]);
+
+  useEffect(() => {
+    if (dataTicket.deliveryPoint) {
+      setValuePointInput(dataTicket.deliveryPoint.address);
+    }
+  }, [dataTicket.deliveryPoint]);
 
   return (
     <div className="selectLocation">
@@ -125,12 +131,7 @@ const SelectLocation = ({
           ></button>
         </div>
       </div>
-      <div className="selectLocation-map">
-        <p>Выбрать на карте</p>
-        <div className="selectLocation-map__content">
-          <img alt="карта" src={Map} />
-        </div>
-      </div>
+      <Map />
     </div>
   );
 };

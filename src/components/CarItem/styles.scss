@@ -1,9 +1,9 @@
-.сarsItems__item {
+.carItem {
   border: 1px solid #eeeeee;
   height: 224px;
   overflow: hidden;
   position: relative;
-  width: 49.7%;
+  width: 366px;
 
   & img {
     bottom: 16px;
@@ -34,7 +34,7 @@
   }
 }
 
-.сarsItems__button {
+.carItem__button {
   background: none;
   height: 100%;
   width: 100%;
@@ -46,7 +46,7 @@
   }
 }
 
-.сarsItems-info {
+.carItem-info {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
@@ -56,11 +56,11 @@
   top: 0;
 }
 
-.сarsItems-name {
+.carItem-name {
   font-weight: 400;
 }
 
-.сarsItems-price {
+.carItem-price {
   color: #999999;
   display: flex;
 }

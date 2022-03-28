@@ -4,21 +4,22 @@ import { CHANGE_STATE_ROUTING_2 } from '../../redux/action';
 import { changeStateRouting } from '../../redux/reducers/reducerStateBooking';
 import { changeTicket } from '../../Actions';
 import { connect } from 'react-redux';
+import './styles.scss';
 
 const SettingTariff = ({ dataTicket, dataRates, changeTicket }) => {
   return (
-    <div className="selectAdditionally-tariff">
+    <div className="settingTariff">
       <p>Тариф</p>
-      <div className="selectAdditionally-tariff__content">
+      <div className="settingTariff__content">
         {dataRates.data
           .filter((item) => item.rateTypeId)
           .map((item) => (
             <label
               key={item.id}
-              className={`selectAdditionally-tariff__item ${dataTicket.tariff.id === item.id ? 'active' : ''}`}
+              className={`settingTariff__item ${dataTicket.tariff.id === item.id ? 'active' : ''}`}
             >
               <input
-                id="filterTarif"
+                id="filterTariff"
                 type="radio"
                 name="filter-tarif"
                 value="Поминутно"

@@ -1,0 +1,14 @@
+.notFound {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.notFound-form {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}

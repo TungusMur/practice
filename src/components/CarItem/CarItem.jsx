@@ -9,9 +9,9 @@ const CarItem = ({ data, dataTicket, changeTicket, changeStateRouting }) => {
   const [noneImage, setNoneImage] = useState(false);
 
   return (
-    <div className={`сarsItems__item ${data.id === dataTicket.car.id && 'active'}`} key={data.id}>
+    <div className={`carItem ${data.id === dataTicket.car.id && 'active'}`} key={data.id}>
       <button
-        className="сarsItems__button"
+        className="carItem__button"
         onClick={() => {
           changeTicket({
             car: { ...data },
@@ -33,19 +33,19 @@ const CarItem = ({ data, dataTicket, changeTicket, changeStateRouting }) => {
           }}
           hidden={noneImage}
         />
-        <div className="сarsItems-info">
-          <div className="сarsItems-name">
+        <div className="carItem-info">
+          <div className="carItem-name">
             <h5>{data.name}</h5>
           </div>
 
-          <div className="сarsItems-price">
-            <div className="сarsItems-price__min">
+          <div className="carItem-price">
+            <div className="carItem-price__min">
               <p>{data.priceMin}</p>
             </div>
             <p>
               {'\u00A0'}-{'\u00A0'}
             </p>
-            <div className="сarsItems-price__max">
+            <div className="carItem-price__max">
               <p>{data.priceMax}</p>
             </div>
             <p>{'\u00A0'}₽</p>

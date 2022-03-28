@@ -1,0 +1,28 @@
+.orderHeader {
+  align-items: center;
+  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  width: 100%;
+}
+
+.orderHeader-form {
+  width: 81.4%;
+
+  & p {
+    color: #121212;
+    background: none;
+    font-family: 'Roboto-Medium';
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  @media screen and (max-width: 1440px) {
+    width: 88.37%;
+  }
+  @media screen and (max-width: 1023px) {
+    width: 90.58%;
+  }
+}

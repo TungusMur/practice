@@ -1,0 +1,62 @@
+.settingColor {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 34px;
+}
+
+.settingColor__content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.settingColor__item {
+  align-items: center;
+  display: flex;
+  margin-right: 16px;
+  margin-top: 18px;
+
+  & p {
+    color: #999999;
+  }
+
+  &.active {
+    & p {
+      color: #121212;
+    }
+  }
+}
+
+#filterColor {
+  align-items: center;
+  display: flex;
+  height: 12px;
+  justify-content: center;
+  margin: 0;
+  margin-right: 8px;
+  outline: none;
+  position: relative;
+  width: 12px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+#filterColor:checked::after {
+  background: none;
+  border-radius: 10px;
+  border: 3.5px solid #0ec261;
+  content: '';
+  height: 5px;
+  position: absolute;
+  width: 5px;
+}
+
+#filterColor::before {
+  background: none;
+  border-radius: 10px;
+  border: 1px solid #999999;
+  content: '';
+  height: 10px;
+  position: absolute;
+  width: 10px;
+}
