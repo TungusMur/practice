@@ -8,9 +8,9 @@ import SelectAdditionally from '../Pages/SelectAdditionally';
 import SelectResult from '../Pages/SelectResult';
 import Order from '../Pages/Order/Order';
 import NotFound from '../Pages/NotFound';
-import './styles.scss';
 import { connect } from 'react-redux';
 import { fetchCars, fetchCities, fetchCategories, fetchRates } from '../../Actions';
+import './styles.scss';
 
 const Main = ({ fetchCars, fetchCities, fetchCategories, fetchRates }) => {
   const location = useLocation();
