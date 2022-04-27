@@ -1,10 +1,10 @@
 import React from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, useLocation } from 'react-router-dom';
 import iconMap from '../../assets/img/Map/icon.svg';
 import './styles.scss';
 
 const MainHeader = () => {
-  const params = useParams();
+  const location = useLocation();
 
   return (
     <div id="mainHeader" className="mainHeader">
@@ -12,7 +12,7 @@ const MainHeader = () => {
         <div className="mainHeader__logo">
           <NavLink
             className="mainHeader__link"
-            to={`/${params.lang}`}
+            to={`${location.pathname.match(/.+\/(ru|en)/)[0]}`}
             onClick={() => {
               window.scrollTo(0, 0);
             }}
@@ -22,7 +22,6 @@ const MainHeader = () => {
         </div>
         <div className="mainHeader__map">
           <img src={iconMap} alt="iconMap" />
-          {/* <p>{params.lang === 'en' ? 'Ulyanovsk' : 'Ульяновск'}</p> */}
           <p>Ульяновск</p>
         </div>
       </div>

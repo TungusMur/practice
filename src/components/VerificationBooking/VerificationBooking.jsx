@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { changeVerificationState } from '../../Actions';
 import { postOrder, resetTicket, resetPoints, resetBooking } from '../../Actions';
@@ -16,7 +16,6 @@ const VerificationBooking = ({
   resetBooking,
 }) => {
   const navigation = useNavigate();
-  const params = useParams();
   const cancelWindowVerification = useCallback((e) => {
     if (e.target.className === 'verificationBooking-form') {
       changeVerificationState(false);
@@ -29,8 +28,7 @@ const VerificationBooking = ({
 
   useEffect(() => {
     if (dataOrder.data) {
-      console.log(dataOrder);
-      navigation(`/${params.lang}/order/id=${dataOrder.data.id}`);
+      navigation(`${location.pathname.match(/.+\/(ru|en)/)[0]}/order/id=${dataOrder.data.id}`);
       resetTicket();
       resetBooking();
       resetPoints();

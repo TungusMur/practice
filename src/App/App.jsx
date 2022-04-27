@@ -8,20 +8,22 @@ const App = () => (
   <div className="app">
     <Router>
       <Routes>
-        <Route
-          exact
-          path="/"
-          element={
-            <>
-              <Header />
-              <Outlet />
-            </>
-          }
-        >
-          <Route path={':lang/*'} element={<Main />}></Route>
-        </Route>
-        <Route path="admin">
-          <Route index element={<Authorization />} />
+        <Route path="/">
+          <Route
+            exact
+            path="need-for-drive"
+            element={
+              <>
+                <Header />
+                <Outlet />
+              </>
+            }
+          >
+            <Route path={':lang/*'} element={<Main />}></Route>
+          </Route>
+          <Route path="/admin-panel">
+            <Route index element={<Authorization />} />
+          </Route>
         </Route>
       </Routes>
     </Router>

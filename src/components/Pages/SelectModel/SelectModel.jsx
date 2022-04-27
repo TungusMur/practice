@@ -20,7 +20,7 @@ const SelectModel = ({ dataTicket, changeStatePage }) => {
 
   useEffect(() => {
     if (!(dataTicket.city && dataTicket.deliveryPoint)) {
-      navigation(`/${params.lang}/reserve/location`);
+      navigation(`/${location.pathname.match(/.+\/(ru|en)/)[0]}/reserve/location`);
     }
   }, []);
 

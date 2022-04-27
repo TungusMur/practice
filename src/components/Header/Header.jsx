@@ -12,8 +12,8 @@ const Header = () => {
   const params = useParams();
 
   useEffect(() => {
-    if (location.pathname === '/') {
-      navigation('/ru');
+    if (location.pathname === '/need-for-drive/') {
+      navigation('/need-for-drive/ru');
     }
   }, []);
 
@@ -35,7 +35,7 @@ const Header = () => {
         <button
           className={`header-bar_button-changeLanguage ${statusHeaderClick}`}
           onClick={() => {
-            navigation(`${location.pathname.replace(/\w+/, params.lang === 'en' ? 'ru' : 'en')}`);
+            navigation(`${location.pathname.replace(/(ru|en)/, params.lang === 'en' ? 'ru' : 'en')}`);
           }}
         >
           {params.lang === 'en' ? 'Rus' : 'Eng'}
@@ -49,7 +49,7 @@ const Header = () => {
                 <div key={item.id + item.link} className="header-navigation_item">
                   <NavLink
                     className="header-navigation_link"
-                    to={`/${params.lang}/${item.link}`}
+                    to={`${location.pathname.match(/.+\/(ru|en)/)?.[0]}/${item.link}`}
                     onClick={() => {
                       setStatusHeaderClick('');
                       window.scrollTo(0, 0);
