@@ -57,7 +57,7 @@
 .authorization-action {
   margin: 16.5px 0px 20.5px;
   width: 341.5px;
-  
+
   @media screen and (max-width: 767px) {
     width: 276.5px;
   }
@@ -101,13 +101,17 @@
   &.authorization-registration {
     background: none;
     color: #9eaab9;
-    font-size: 10.5px;
+    font-size: 11.5px;
 
     &.active {
-      color: #007bff;
+      color: hsl(211, 100%, 50%);
+
+      &:hover {
+        color: hsl(211, 100%, 40%);
+      }
 
       &:active {
-        color: #003874;
+        color: hsl(211, 100%, 30%);
       }
     }
   }
@@ -121,10 +125,14 @@
     width: 110px;
 
     &.active {
-      background: #007bff;
+      background: hsl(211, 100%, 50%);
+
+      &:hover {
+        background: hsl(211, 100%, 40%);
+      }
 
       &:active {
-        background: #003874;
+        background: hsl(211, 100%, 30%);
       }
     }
   }

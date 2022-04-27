@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import Slider from '../Slider';
 import MainHeader from '../../common/MainHeader';
@@ -9,10 +9,6 @@ const PrimaryMain = () => {
   const params = useParams();
   const location = useLocation();
   const navigation = useNavigate();
-
-  useEffect(() => {
-    console.log(location);
-  }, []);
 
   return (
     <div className="primaryMain">
