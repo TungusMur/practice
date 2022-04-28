@@ -118,7 +118,7 @@ const OrderTicket = ({ dataOrder, cancelOrder }) => {
               className={`orderTicket__button button-id2 `}
               onClick={() => {
                 cancelOrder(dataOrder.data.id);
-                navigation(`/${params.lang}/`);
+                navigation(`${location.pathname.match(/.+\/(ru|en)/)[0]}/`);
               }}
             >
               Отменить
