@@ -13,7 +13,7 @@ const Header = () => {
 
   useEffect(() => {
     if (location.pathname === '/need-for-drive/') {
-      navigation('/need-for-drive/ru');
+      navigation(`${location.pathname}/ru`);
     }
   }, []);
 

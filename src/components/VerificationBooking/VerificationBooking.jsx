@@ -28,7 +28,7 @@ const VerificationBooking = ({
 
   useEffect(() => {
     if (dataOrder.data) {
-      navigation(`${location.pathname.match(/.+\/(ru|en)/)[0]}/order/id=${dataOrder.data.id}`);
+      navigation(`${location.pathname.match(/.+\/(ru|en)/)?.[0]}/order/id=${dataOrder.data.id}`);
       resetTicket();
       resetBooking();
       resetPoints();

@@ -13,8 +13,9 @@ const Booking = () => {
   const params = useParams();
 
   useEffect(() => {
-    if (location.pathname === '/ru/reserve') {
-      navigation(`/${params.lang}/reserve/location`);
+    console.log(location);
+    if (location.pathname.replace(/.+\/(ru|en)/, '') === '/reserve') {
+      navigation(`${location.pathname}/location`);
     }
   }, []);
 
