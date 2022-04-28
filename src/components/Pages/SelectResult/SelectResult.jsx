@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import VerificationBooking from '../../VerificationBooking';
 import { changeVerificationState } from '../../../Actions';
 import { changeStatePage } from '../../../redux/reducers/reducerStateBooking';
@@ -11,6 +11,7 @@ const SelectResult = ({ dataTicket, changeStatePage, verificationState }) => {
   const [noneImage, setNoneImage] = useState(false);
   const navigation = useNavigate();
   const params = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     document.body.style.overflow = verificationState ? 'hidden' : 'auto';
@@ -23,7 +24,7 @@ const SelectResult = ({ dataTicket, changeStatePage, verificationState }) => {
 
   useEffect(() => {
     if (!(dataTicket.city && dataTicket.deliveryPoint)) {
-      navigation(`/${params.lang}/reserve/location`);
+      navigation(`/${location.pathname.match(/.+\/(ru|en)/)[0]}/reserve/location`);
     }
   }, []);
 

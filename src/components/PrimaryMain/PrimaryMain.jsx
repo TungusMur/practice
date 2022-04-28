@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import Slider from '../Slider';
 import MainHeader from '../../common/MainHeader';
 import '../../styles/button.scss';
@@ -7,6 +7,7 @@ import './styles.scss';
 
 const PrimaryMain = () => {
   const params = useParams();
+  const location = useLocation();
   const navigation = useNavigate();
 
   return (
@@ -26,7 +27,7 @@ const PrimaryMain = () => {
           <button
             className="primaryMain-booking__button button-classic"
             onClick={() => {
-              navigation(`/${params.lang}/reserve/location`);
+              navigation(`${location.pathname}/reserve/location`);
               window.scrollTo(0, 0);
             }}
           >

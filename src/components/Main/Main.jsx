@@ -8,14 +8,15 @@ import SelectAdditionally from '../Pages/SelectAdditionally';
 import SelectResult from '../Pages/SelectResult';
 import Order from '../Pages/Order/Order';
 import NotFound from '../Pages/NotFound';
-import './styles.scss';
 import { connect } from 'react-redux';
 import { fetchCars, fetchCities, fetchCategories, fetchRates } from '../../Actions';
+import './styles.scss';
 
 const Main = ({ fetchCars, fetchCities, fetchCategories, fetchRates }) => {
   const location = useLocation();
   const navigation = useNavigate();
   const params = useParams();
+  const link = RegExp(`.+\/${params.lang}`)
 
   useEffect(() => {
     fetchCategories();
@@ -26,7 +27,8 @@ const Main = ({ fetchCars, fetchCities, fetchCategories, fetchRates }) => {
 
   useEffect(() => {
     if (params.lang !== 'en' && params.lang !== 'ru') {
-      navigation(`/ru${location.pathname.match(/\/\w+/g)?.length > 1 ? location.pathname.match(/\/\w+/g)[1] : ''}`);
+      console.log(location.pathname.match(link));
+      navigation(`${location.pathname.match(/.+need-for-drive/)}/ru${location.pathname.replace(link, '')}`);
     }
   }, []);
 
