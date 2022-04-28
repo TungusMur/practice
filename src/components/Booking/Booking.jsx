@@ -13,7 +13,18 @@ const Booking = () => {
   const params = useParams();
 
   useEffect(() => {
-    console.log(location);
+    if (location.pathname.replace(/\/\w+/, '') === '/reserve/location') {
+      setBookingPageActive(0);
+    } else if (location.pathname.replace(/\/\w+/, '')  === '/reserve/model') {
+      setBookingPageActive(1);
+    } else if (location.pathname.replace(/\/\w+/, '') === '/reserve/additionally') {
+      setBookingPageActive(2);
+    } else if (location.pathname.replace(/\/\w+/, '') === '/reserve/result') {
+      setBookingPageActive(3);
+    }
+  }, [location]);
+
+  useEffect(() => {
     if (location.pathname.replace(/.+\/(ru|en)/, '') === '/reserve') {
       navigation(`${location.pathname}/location`);
     }
@@ -25,14 +36,12 @@ const Booking = () => {
       <div className="booking-form">
         <BookingHeader
           bookingPageActive={bookingPageActive}
-          setBookingPageActive={setBookingPageActive}
           bookingNavigationItems={bookingNavigationItems}
         />
         <div className="booking-content">
           <Outlet />
           <BookingTicket
             bookingPageActive={bookingPageActive}
-            setBookingPageActive={setBookingPageActive}
             bookingNavigationItems={bookingNavigationItems}
           />
         </div>

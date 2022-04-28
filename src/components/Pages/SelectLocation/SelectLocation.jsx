@@ -64,6 +64,11 @@ const SelectLocation = ({
             placeholder="Начните вводить город ..."
             onChange={(e) => {
               setValueCityInput(e.target.value);
+              if (dataTicket.deliveryPoint) {
+                resetPoints();
+                changeTicket({ deliveryPoint: '' });
+                setValuePointInput('');
+              }
             }}
             onFocus={() => {
               setFocusCityActive('active');

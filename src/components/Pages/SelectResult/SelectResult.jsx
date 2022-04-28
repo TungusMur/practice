@@ -7,7 +7,7 @@ import { CHANGE_STATE_PAGES_3 } from '../../../redux/action';
 import { connect } from 'react-redux';
 import './styles.scss';
 
-const SelectResult = ({ dataTicket, changeStatePage, verificationState }) => {
+const SelectResult = ({ dataTicket, changeStatePage, changeVerificationState, verificationState }) => {
   const [noneImage, setNoneImage] = useState(false);
   const navigation = useNavigate();
   const params = useParams();
@@ -19,7 +19,9 @@ const SelectResult = ({ dataTicket, changeStatePage, verificationState }) => {
 
   useEffect(() => {
     changeStatePage(CHANGE_STATE_PAGES_3);
-    changeVerificationState(false);
+    return () => {
+      changeVerificationState(false);
+    };
   }, []);
 
   useEffect(() => {
@@ -97,5 +99,5 @@ const SelectResult = ({ dataTicket, changeStatePage, verificationState }) => {
 
 export default connect(
   (data) => ({ dataTicket: data.reducerTicketData, verificationState: data.reducerVerificationState.state }),
-  { changeStatePage }
+  { changeStatePage, changeVerificationState }
 )(SelectResult);
