@@ -26,7 +26,7 @@ const SelectResult = ({ dataTicket, changeStatePage, changeVerificationState, ve
 
   useEffect(() => {
     if (!(dataTicket.city && dataTicket.deliveryPoint)) {
-      navigation(`/${location.pathname.match(/.+\/(ru|en)/)[0]}/reserve/location`);
+      navigation(`${location.pathname.match(/.+\/(ru|en)/)[0]}/reserve/location`);
     }
   }, []);
 

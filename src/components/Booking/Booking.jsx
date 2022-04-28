@@ -13,13 +13,13 @@ const Booking = () => {
   const params = useParams();
 
   useEffect(() => {
-    if (location.pathname.replace(/\/\w+/, '') === '/reserve/location') {
+    if (location.pathname.replace(/.+\/(ru|en)/, '') === '/reserve/location') {
       setBookingPageActive(0);
-    } else if (location.pathname.replace(/\/\w+/, '')  === '/reserve/model') {
+    } else if (location.pathname.replace(/.+\/(ru|en)/, '')  === '/reserve/model') {
       setBookingPageActive(1);
-    } else if (location.pathname.replace(/\/\w+/, '') === '/reserve/additionally') {
+    } else if (location.pathname.replace(/.+\/(ru|en)/, '') === '/reserve/additionally') {
       setBookingPageActive(2);
-    } else if (location.pathname.replace(/\/\w+/, '') === '/reserve/result') {
+    } else if (location.pathname.replace(/.+\/(ru|en)/, '') === '/reserve/result') {
       setBookingPageActive(3);
     }
   }, [location]);

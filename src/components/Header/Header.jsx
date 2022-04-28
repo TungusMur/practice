@@ -12,7 +12,7 @@ const Header = () => {
   const params = useParams();
 
   useEffect(() => {
-    if (location.pathname === '/need-for-drive/') {
+    if (!params.lang) {
       navigation(`${location.pathname}/ru`);
     }
   }, []);
