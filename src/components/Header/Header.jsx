@@ -13,7 +13,7 @@ const Header = () => {
 
   useEffect(() => {
     if (!params.lang) {
-      navigation(`${location.pathname}/ru`);
+      navigation(`${location.pathname}${location.pathname.match(/\/$/) ? '' : '/'}ru`);
     }
   }, []);
 
