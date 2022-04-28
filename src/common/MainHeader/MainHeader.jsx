@@ -12,7 +12,7 @@ const MainHeader = () => {
         <div className="mainHeader__logo">
           <NavLink
             className="mainHeader__link"
-            to={`${location.pathname.match(/.+\/(ru|en)/)[0]}`}
+            to={`${location.pathname.match(/.+\/(ru|en)/)?.[0]}`}
             onClick={() => {
               window.scrollTo(0, 0);
             }}
