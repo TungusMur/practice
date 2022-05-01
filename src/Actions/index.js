@@ -13,6 +13,14 @@ import cancelOrder from './cancelOrderDataAction';
 import resetOrder from './resetOrderDataAction';
 import changeVerificationState from './changeVerificationState';
 
+/////admin/////
+import postRegister from './postRegisterAction';
+import postLogin from './postLoginAction';
+import postLogout from './postLogoutAction';
+import postRefresh from './postRefreshAction';
+import getCheck from './getCheckAction';
+import resetLogin from './resetLoginAction';
+
 export {
   fetchCars,
   fetchCities,
@@ -28,4 +36,10 @@ export {
   cancelOrder,
   resetOrder,
   changeVerificationState,
+  postRegister,
+  postLogin,
+  postLogout,
+  postRefresh,
+  getCheck,
+  resetLogin,
 };
