@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { postLogin, postRegister, resetLogin } from '../../../Actions';
 import logo from '../../../assets/img/Admin/Logo.svg';
 import './styles.scss';
 
-const Authorization = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [stateActive, setStateActive] = useState('');
+const Authorization = ({ dataAuthorization, postLogin, postRegister, resetLogin }) => {
+  const [dataUser, setDataUser] = useState({ username: '', password: '' });
+  const [errorStatus, setErrorStatus] = useState('');
 
   useEffect(() => {
-    if (email && password) {
-      setStateActive('active');
-    } else {
-      setStateActive('');
-    }
-  }, [email, password]);
+    setErrorStatus(dataAuthorization.statusLogin);
+  }, [dataAuthorization.statusLogin]);
 
   return (
     <div className="authorization">
@@ -25,15 +22,18 @@ const Authorization = () => {
         <div className="authorization-content">
           <h5>Вход</h5>
           <div className="authorization-action">
-            <div className="authorization-email">
+            <div className="authorization-username">
               <p>Почта</p>
               <input
-                type="email"
-                className="authorization-action__input"
-                placeholder="Введите почту"
-                value={email}
+                type="username"
+                className={`authorization-action__input ${errorStatus === 200 || !errorStatus ? '' : 'error'}`}
+                placeholder="Введите почту или логин"
+                value={dataUser.username}
                 onChange={(e) => {
-                  setEmail(e.target.value);
+                  setDataUser((data) => ({ ...data, username: e.target.value }));
+                }}
+                onFocus={() => {
+                  resetLogin();
                 }}
               />
             </div>
@@ -41,19 +41,45 @@ const Authorization = () => {
               <p>Пароль</p>
               <input
                 type="password"
-                className="authorization-action__input"
+                className={`authorization-action__input ${errorStatus === 200 || !errorStatus ? '' : 'error'}`}
                 placeholder="Введите пароль"
-                value={password}
+                value={dataUser.password}
                 onChange={(e) => {
-                  setPassword(e.target.value);
+                  setDataUser((data) => ({ ...data, password: e.target.value }));
+                }}
+                onFocus={() => {
+                  resetLogin();
                 }}
               />
             </div>
+            <div className="authorization-error">{errorStatus && <p>Неправельный логин или пароль</p>}</div>
             <div className="authorization-enter">
-              <button className={`authorization-action__button authorization-registration ${stateActive}`}>
+              <button
+                className={`authorization-action__button authorization-registration ${
+                  dataUser.username && dataUser.password ? 'active' : ''
+                }`}
+                onClick={() => {
+                  if (dataUser.username && dataUser.password) {
+                    postRegister(dataUser);
+                    setDataUser({ username: '', password: '' });
+                  }
+                }}
+              >
                 Запросить доступ
               </button>
-              <button className={`authorization-action__button authorization-login ${stateActive}`}>Войти</button>
+              <button
+                className={`authorization-action__button authorization-login ${
+                  dataUser.username && dataUser.password ? 'active' : ''
+                }`}
+                onClick={() => {
+                  if (dataUser.username && dataUser.password) {
+                    postLogin(dataUser);
+                    setDataUser((data) => ({ ...data, password: '' }));
+                  }
+                }}
+              >
+                Войти
+              </button>
             </div>
           </div>
         </div>
@@ -62,4 +88,8 @@ const Authorization = () => {
   );
 };
 
-export default Authorization;
+export default connect((data) => ({ dataAuthorization: data.reducerAuthorizationState }), {
+  postLogin,
+  postRegister,
+  resetLogin,
+})(Authorization);

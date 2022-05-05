@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import Header from '../components/Header';
 import Main from '../components/Main';
-import Authorization from '../components/Pages/Authorization';
+import AdminPanel from '../components/Pages/AdminPanel';
 
 const App = () => (
   <div className="app">
@@ -21,9 +21,7 @@ const App = () => (
           >
             <Route path={':lang/*'} element={<Main />}></Route>
           </Route>
-          <Route path="/admin-panel">
-            <Route index element={<Authorization />} />
-          </Route>
+          <Route path="/admin-panel/*" element={<AdminPanel />} />
         </Route>
       </Routes>
     </Router>

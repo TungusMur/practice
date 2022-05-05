@@ -39,3 +39,12 @@ export const ERROR_ORDER_DATA = 'ERROR_ORDER_DATA';
 export const RESET_ORDER_DATA = 'RESET_ORDER_DATA';
 
 export const GET_DRAFT_DATA = 'GET_DRAFT_DATA';
+
+export const POST_LOGIN = 'POST_LOGIN';
+export const ERROR_LOGIN = 'ERROR_LOGIN';
+export const RESET_LOGIN = 'RESET_LOGIN';
+export const POST_LOGOUT = 'POST_LOGOUT';
+export const POST_REGISTER = 'POST_REGISTER';
+export const ERROR_REGISTER = 'ERROR_REGISTER';
+export const POST_REFRESH = 'POST_REFRESH';
+export const ERROR_REFRESH = 'ERROR_REFRESH';
