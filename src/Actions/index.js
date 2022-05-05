@@ -18,7 +18,6 @@ import postRegister from './postRegisterAction';
 import postLogin from './postLoginAction';
 import postLogout from './postLogoutAction';
 import postRefresh from './postRefreshAction';
-import getCheck from './getCheckAction';
 import resetLogin from './resetLoginAction';
 
 export {
@@ -40,6 +39,5 @@ export {
   postLogin,
   postLogout,
   postRefresh,
-  getCheck,
   resetLogin,
 };

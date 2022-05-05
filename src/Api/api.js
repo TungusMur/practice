@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 export const api = axios.create({
+  baseURL: process.env.REACT_APP_BASE_URL_API,
   headers: {
-    'X-Api-Factory-Application-Id': '5e25c641099b810b946c5d5b',
+    'X-Api-Factory-Application-Id': process.env.REACT_APP_APPLICATION_ID,
     'Content-Type': 'application/json',
   },
 });
