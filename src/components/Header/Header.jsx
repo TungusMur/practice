@@ -22,7 +22,7 @@ const Header = () => {
   }, [statusHeaderClick]);
 
   return (
-    <header className={`${statusHeaderClick}`}>
+    <header className={`header ${statusHeaderClick}`}>
       <div className="header-bar">
         <button
           className={`header-bar_button-burger button-burger ${statusHeaderClick}`}
