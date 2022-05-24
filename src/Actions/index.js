@@ -19,6 +19,8 @@ import postLogin from './postLoginAction';
 import postLogout from './postLogoutAction';
 import postRefresh from './postRefreshAction';
 import resetLogin from './resetLoginAction';
+import fetchOrders from './getOrdersDataAction';
+import fetchFilter from './getFilterDataAction';
 
 export {
   fetchCars,
@@ -40,4 +42,6 @@ export {
   postLogout,
   postRefresh,
   resetLogin,
+  fetchOrders,
+  fetchFilter,
 };

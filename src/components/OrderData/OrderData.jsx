@@ -34,7 +34,7 @@ const OrderData = ({ dataOrder }) => {
                 <h5>{dataOrder.data.carId.name}</h5>
               </div>
               <div className="orderData-number">
-                <p>{dataOrder.data.carId.number.replace(/(\d+)/g, ' $1 ').toUpperCase()}</p>
+                <p>{dataOrder.data.carId.number ? dataOrder.data.carId.number.replace(/(\d+)/g, ' $1 ').toUpperCase() : "A 000 AA 00"}</p>
               </div>
               <div className="orderData-fullTank">
                 <div className="orderData-description">

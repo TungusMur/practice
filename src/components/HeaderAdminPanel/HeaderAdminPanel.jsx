@@ -2,15 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { navigationItems } from './constants';
 import logo from '../../assets/img/Admin/Logo.svg';
+import { connect } from 'react-redux';
+import { fetchFilter } from '../../Actions';
 import './styles.scss';
 
-const HeaderAdminPanel = () => {
+const HeaderAdminPanel = ({ fetchFilter }) => {
   const [pageActive, setPageActive] = useState(null);
   const [statusHoverImg, setStatusHoverImg] = useState('');
   const location = useLocation();
 
   useEffect(() => {
-    console.log(location.pathname);
+    fetchFilter();
+  }, []);
+
+  useEffect(() => {
     switch (location.pathname.replace(/.+\//, '')) {
       case 'carCard': {
         setPageActive(0);
@@ -70,4 +75,4 @@ const HeaderAdminPanel = () => {
   );
 };
 
-export default HeaderAdminPanel;
+export default connect(null, { fetchFilter })(HeaderAdminPanel);

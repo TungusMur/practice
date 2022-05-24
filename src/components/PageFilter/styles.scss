@@ -1,0 +1,7 @@
+.pageList-itemList {
+  position: relative;
+  display: none;
+  &.active {
+    display: block;
+  }
+}

@@ -8,6 +8,8 @@ import reducerRatesData from './reducerRatesData';
 import reducerOrderData from './reducerOrderData';
 import reducerVerificationState from './reducerVerificationState';
 import reducerAuthorizationState from './reducerAuthorizationState';
+import reducerOrdersData from './reducerOrdersData';
+import reducerFiltersData from './reducerFiltersData';
 
 export default {
   reducerStateBooking,
@@ -20,4 +22,6 @@ export default {
   reducerOrderData,
   reducerVerificationState,
   reducerAuthorizationState,
+  reducerOrdersData,
+  reducerFiltersData,
 };
