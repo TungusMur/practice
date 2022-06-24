@@ -1,0 +1,72 @@
+.pageFilterItem {
+  margin-right: 15px;
+  width: 110.5px;
+  height: 29px;
+}
+
+.pageFilterItem_button {
+  width: 100%;
+  height: 100%;
+  border: 0.5px solid #becad6;
+  border-radius: 4px;
+  background: none;
+  & p {
+    text-overflow: ellipsis;
+    margin-left: 14px;
+    text-align: start;
+    font-family: 'Helvetica-Light';
+    font-size: 13px;
+    color: #414344;
+    width: 66%;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+
+.pageFilterItem-list {
+  width: 180px;
+  background: #ffffff;
+  border-radius: 4px;
+  outline: 0px solid #becad6;
+  overflow: scroll;
+  max-height: 0px;
+  position: relative;
+  display: block;
+  transition: 0.25s;
+  top: 9px;
+
+  &.active {
+    outline: 1px solid #becad6;
+    max-height: 200px;
+  }
+
+  &::-webkit-scrollbar {
+    background-color: none;
+    border-left: 1px solid #becad6;
+    border-radius: 4px;
+    width: 10px;
+    height: 0px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #becad6;
+  }
+}
+
+.pageFilterItem-list_item {
+  border-bottom: 1px solid #becad6;
+}
+
+.pageFilterItem-list_button {
+  padding: 5px 0px;
+  width: 100%;
+  background: none;
+  & p {
+    margin-left: 14px;
+    text-align: start;
+    font-family: 'Helvetica-Light';
+    font-size: 16px;
+    color: #414344;
+  }
+}

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { fetchOrders } from '../../../Actions';
 import PageList from '../../PageList';
 import PageFilter from '../../PageFilter';
+import AdminPanelOrdersItem from '../../AdminPanelOrdersItem';
+import './styles.scss';
 
 const AdminPanelOrders = ({ ordersData, filtersData, fetchOrders }) => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -51,9 +53,7 @@ const AdminPanelOrders = ({ ordersData, filtersData, fetchOrders }) => {
               ) : (
                 <ul className="adminPanelOrders-list">
                   {ordersData.data.map((item) => (
-                    <li className="adminPanelOrders-list_item" key={item.id}>
-                      {item.carId && <img src={item.carId.thumbnail.path} />}
-                    </li>
+                    <AdminPanelOrdersItem key={item.id} data={item} />
                   ))}
                 </ul>
               )}

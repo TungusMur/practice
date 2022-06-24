@@ -20,7 +20,7 @@ const PageFilter = ({ data, dataDefault, filters, setFilters, volume }) => {
       </ul>
       <div className="pageFilter-action">
         <button
-          className="pageFilter-action_button"
+          className="pageFilter-action_button pageFilter-action_button-reset"
           onClick={() => {
             setDataReturn((oldDataReturn) => [...oldDataReturn.map(() => '')]);
             if (
@@ -33,10 +33,10 @@ const PageFilter = ({ data, dataDefault, filters, setFilters, volume }) => {
             }
           }}
         >
-          Сбросить
+          <p>Сбросить</p>
         </button>
         <button
-          className="pageFilter-action_button"
+          className="pageFilter-action_button pageFilter-action_button-accept"
           onClick={() => {
             if (
               dataReturn.reduce(
@@ -48,7 +48,7 @@ const PageFilter = ({ data, dataDefault, filters, setFilters, volume }) => {
             }
           }}
         >
-          Принять
+         <p>Принять</p>
         </button>
       </div>
     </div>

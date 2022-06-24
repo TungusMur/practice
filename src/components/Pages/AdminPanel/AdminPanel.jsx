@@ -29,7 +29,9 @@ const AdminPanel = ({ dataAuthorization, postRefresh }) => {
                   <HeaderAdminPanel />
                   <main>
                     <MainHeaderAdminPanel />
-                    <Outlet />
+                    <div className="mainAdminPanel">
+                      <Outlet />
+                    </div>
                   </main>
                 </>
               }

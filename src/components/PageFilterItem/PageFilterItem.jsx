@@ -1,10 +1,16 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import './styles.scss';
 
 const PageFilterItem = ({ item, index, dataReturn, dataDefault, setDataReturn }) => {
   const [state, setState] = useState('');
 
   const notFocusItem = useCallback((e) => {
-    if (e.target.className !== `pageList-list_button_${index}`) {
+    if (
+      ![
+        `pageFilterItem_button pageFilterItem_item_${index}`,
+        `pageFilterItem_button_text pageFilterItem_item_${index}`,
+      ].includes(e.target.className)
+    ) {
       setState('');
     }
   }, []);
@@ -14,21 +20,23 @@ const PageFilterItem = ({ item, index, dataReturn, dataDefault, setDataReturn })
   }, []);
 
   return (
-    <li className="pageFilter-list_item">
+    <li className="pageFilterItem">
       <button
-        className={`pageList-list_button_${index}`}
+        className={`pageFilterItem_button pageFilterItem_item_${index}`}
         onClick={() => {
           setState((dataState) => (dataState ? '' : 'active'));
         }}
       >
-        {dataReturn[index].name || dataDefault[index]}
+        <p className={`pageFilterItem_button_text pageFilterItem_item_${index}`}>
+          {dataReturn[index].name || dataDefault[index]}
+        </p>
       </button>
-      <ul className={`pageList-itemList ${state}`}>
+      <ul className={`pageFilterItem-list ${state}`}>
         {item.length ? (
           item.map((item, indexChild) => (
-            <li className="pageList-itemList_item" key={`itemList${indexChild}`}>
+            <li className="pageFilterItem-list_item" key={`itemList${indexChild}`}>
               <button
-                className="pageList-itemList_button"
+                className="pageFilterItem-list_button"
                 onClick={() => {
                   setDataReturn((oldDataReturn) => {
                     oldDataReturn[index] = { name: item.name, id: item.id };
@@ -36,12 +44,12 @@ const PageFilterItem = ({ item, index, dataReturn, dataDefault, setDataReturn })
                   });
                 }}
               >
-                {item.name}
+                <p>{item.name}</p>
               </button>
             </li>
           ))
         ) : (
-          <li className="pageList-itemList_item pageList-itemList_loading">Загрузка</li>
+          <li className="pageFilterItem-list_item ppageFilterItem-list_loading">Загрузка</li>
         )}
       </ul>
     </li>

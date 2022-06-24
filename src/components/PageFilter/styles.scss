@@ -1,7 +1,38 @@
-.pageList-itemList {
-  position: relative;
-  display: none;
-  &.active {
-    display: block;
+.pageFilter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px 21.5px;
+  align-items: center;
+  border-bottom: 2px solid #f5f6f8;
+}
+
+.pageFilter-list {
+  display: flex;
+}
+
+.pageFilter-action {
+  display: flex;
+  align-items: center;
+}
+
+.pageFilter-action_button {
+  margin-left: 15px;
+  width: 95px;
+  height: 29px;
+  border-radius: 4px;
+
+  & p {
+    font-family: 'Helvetica-Light';
+    font-size: 12px;
+    color: #ffffff;
   }
+}
+
+.pageFilter-action_button-reset {
+  background: #b00000;
+}
+
+.pageFilter-action_button-accept {
+  background: #007bff;
 }

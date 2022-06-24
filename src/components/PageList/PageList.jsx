@@ -12,7 +12,7 @@ const PageList = ({ pageNumber, setPageNumber, end }) => {
           }
         }}
       >
-        {'<<'}
+        <p>«</p>
       </button>
       <ul className="pageList-list">
         {end > 7 ? (
@@ -24,7 +24,7 @@ const PageList = ({ pageNumber, setPageNumber, end }) => {
                   setPageNumber(1);
                 }}
               >
-                1
+                <p>1</p>
               </button>
             </li>
             <li className={`pageList-list_item ${pageNumber === 2 ? 'active' : ''}`} key={2}>
@@ -42,7 +42,7 @@ const PageList = ({ pageNumber, setPageNumber, end }) => {
                   }
                 }}
               >
-                {pageNumber - 1 > 3 ? '...' : 2}
+                <p>{pageNumber - 1 > 3 ? '...' : 2}</p>
               </button>
             </li>
             <li
@@ -67,11 +67,13 @@ const PageList = ({ pageNumber, setPageNumber, end }) => {
                   );
                 }}
               >
-                {[1, 2, 3, 4].includes(pageNumber)
-                  ? 3
-                  : [end, end - 1, end - 2, end - 3].includes(pageNumber)
-                  ? end - 4
-                  : pageNumber - 1}
+                <p>
+                  {[1, 2, 3, 4].includes(pageNumber)
+                    ? 3
+                    : [end, end - 1, end - 2, end - 3].includes(pageNumber)
+                    ? end - 4
+                    : pageNumber - 1}
+                </p>
               </button>
             </li>
             <li
@@ -96,11 +98,13 @@ const PageList = ({ pageNumber, setPageNumber, end }) => {
                   );
                 }}
               >
-                {[1, 2, 3, 4].includes(pageNumber)
-                  ? 4
-                  : [end, end - 1, end - 2, end - 3].includes(pageNumber)
-                  ? end - 3
-                  : pageNumber}
+                <p>
+                  {[1, 2, 3, 4].includes(pageNumber)
+                    ? 4
+                    : [end, end - 1, end - 2, end - 3].includes(pageNumber)
+                    ? end - 3
+                    : pageNumber}
+                </p>
               </button>
             </li>
             <li
@@ -125,11 +129,13 @@ const PageList = ({ pageNumber, setPageNumber, end }) => {
                   );
                 }}
               >
-                {[1, 2, 3, 4].includes(pageNumber)
-                  ? 5
-                  : [end, end - 1, end - 2, end - 3].includes(pageNumber)
-                  ? end - 2
-                  : pageNumber + 1}
+                <p>
+                  {[1, 2, 3, 4].includes(pageNumber)
+                    ? 5
+                    : [end, end - 1, end - 2, end - 3].includes(pageNumber)
+                    ? end - 2
+                    : pageNumber + 1}
+                </p>
               </button>
             </li>
             <li className={`pageList-list_item ${pageNumber === end - 1 ? 'active' : ''}`} key={end - 1}>
@@ -147,7 +153,7 @@ const PageList = ({ pageNumber, setPageNumber, end }) => {
                   }
                 }}
               >
-                {end - pageNumber > 3 ? '...' : end - 1}
+                <p>{end - pageNumber > 3 ? '...' : end - 1}</p>
               </button>
             </li>
             <li className={`pageList-list_item ${pageNumber === end ? 'active' : ''}`} key={end}>
@@ -157,7 +163,7 @@ const PageList = ({ pageNumber, setPageNumber, end }) => {
                   setPageNumber(end);
                 }}
               >
-                {end}
+                <p>{end}</p>
               </button>
             </li>
           </>
@@ -171,7 +177,7 @@ const PageList = ({ pageNumber, setPageNumber, end }) => {
                     setPageNumber(index + 1);
                   }}
                 >
-                  {index + 1}
+                  <p>{index + 1}</p>
                 </button>
               </li>
             ))}
@@ -186,7 +192,7 @@ const PageList = ({ pageNumber, setPageNumber, end }) => {
           }
         }}
       >
-        {'>>'}
+        <p>»</p>
       </button>
     </div>
   );
